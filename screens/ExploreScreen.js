@@ -14,7 +14,7 @@ const ExploreScreen = ({ navigation }) => {
                 justifyContent: 'center'
             }}
         >
-            <Text>Welcome to Dishcovery!</Text>
+            <Text>AWelcome to Dishcovery!</Text>
             <Text>This is the Explore Ingredients Screen {"\n"}</Text>
             <TouchableOpacity
                 onPress={() => navigation.navigate("Scan")}
