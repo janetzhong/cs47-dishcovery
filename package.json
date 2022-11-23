@@ -8,10 +8,11 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native": "*",
-    "axios": "0.27.2",
-    "clarifai": "^2.9.1",
+    "axios": "^0.27.2",
+    "clarifai": "~2.9.1",
     "expo": "~46.0.17",
     "expo-camera": "~12.3.0",
     "expo-constants": "~13.2.4",
@@ -20,16 +21,16 @@
     "firebase": "^9.14.0",
     "react": "18.0.0",
     "react-native": "0.69.6",
-    "react-native-camera": "^4.2.1",
+    "react-native-camera": "~4.2.1",
     "react-native-paper": "4.9.2",
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0"
   },
   "overrides": {
     "clarifai": {
-    "axios": "$axios"
+      "axios": "$axios"
     }
-    },
+  },
   "devDependencies": {
     "@babel/core": "^7.12.9"
   },
