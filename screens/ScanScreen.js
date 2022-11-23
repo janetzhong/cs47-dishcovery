@@ -69,6 +69,7 @@ export default class App extends React.Component {
     state = {
       hasCameraPermission: null,
       predictions: [],
+      filteredPredictions: {},
     };
     async componentDidMount() {
       const { status } = await Camera.requestCameraPermissionsAsync();
@@ -101,6 +102,7 @@ export default class App extends React.Component {
       let resized = await this.resize(photo);
       let predictions = await this.predict(resized);
       this.setState({ predictions: predictions.outputs[0].data.concepts });
+      this.setState({filteredPredictions: predictions.filter(({key}) => Object.keys(ingredientContexttest).includes(key)) });
     };
     
     identifyIngredient = async predictions => {
@@ -115,7 +117,6 @@ export default class App extends React.Component {
   };
     render() {
       // make the button change state and be actionable - ingredient detected and then be clickable for context
-      filteredPredictions = predictions.filter(({key}) => Object.keys(ingredientContexttest).includes(key));
       const { hasCameraPermission, predictions, filteredPredictions } = this.state;
      
       if (hasCameraPermission === null) {
