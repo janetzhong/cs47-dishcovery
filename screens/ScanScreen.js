@@ -115,8 +115,9 @@ export default class App extends React.Component {
   };
     render() {
       // make the button change state and be actionable - ingredient detected and then be clickable for context
-      const { hasCameraPermission, predictions } = this.state;
-      const filteredPredictions = predictions.filter(({key}) => Object.keys(ingredientContexttest).includes(key));
+      filteredPredictions = predictions.filter(({key}) => Object.keys(ingredientContexttest).includes(key));
+      const { hasCameraPermission, predictions, filteredPredictions } = this.state;
+     
       if (hasCameraPermission === null) {
         return <View />;
       } else if (hasCameraPermission === false) {
@@ -147,10 +148,10 @@ export default class App extends React.Component {
                   }}
                 >
                   <FlatList
-                  // filteredpredictions: from predictions dictionary, 
+                  // filteredPredictions: from predictions dictionary, 
                   // keep only the ones where the key (prediction)
                   // is in ingredientContextList.keys()
-                  // filteredpredictions is a dictionary
+                  // filteredPredictions is a dictionary
                     data={filteredPredictions.map(prediction => ({
                       key: `${prediction.name} ${prediction.value}`,
                     }))}
