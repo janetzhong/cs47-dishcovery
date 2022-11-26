@@ -93,21 +93,23 @@ export default class App extends React.Component {
     let photo = await this.capturePhoto();
     let resized = await this.resize(photo);
     let predictions = await this.predict(resized);
+    console.log("object detection")
+    console.log(predictions.outputs[0].data.concepts )
     this.setState({ predictions: predictions.outputs[0].data.concepts });
   };
 
   render() {
     const { hasCameraPermission, predictions } = this.state;
     console.log(predictions)
-    //let wanttokeep = Object.keys(ingredientContexttest)
-    let wanttokeep =["vegetable","sweet"]
-    let filteredpredictions = Object.entries(predictions).filter(([k, pred]) => wanttokeep.some(culturalIngred => culturalIngred == pred.name));
+    let wanttokeep = Object.keys(ingredientContexttest)
+    //let wanttokeep =["vegetable","sweet"]
+    let filteredpredictions =  Object.values(Object.fromEntries(Object.entries(predictions).filter(([k, pred]) => wanttokeep.some(culturalIngred => culturalIngred == pred.name))));
     console.log("Did it filter?")
     console.log(filteredpredictions)
-    console.log(Object.keys(filteredpredictions))
-    // filteredpredictions successfully filtered but the structure of the object is slightly different
-    // it looks like [["0", {"app_id": "main", "id": "ai_NDbbpCv1", "name": "vegetable", "value": 0.8826058}], ["1", {"app_id": "main", "id": "ai_0wh0dJkQ", "name": "sweet", "value": 0.8487085}]]
- 
+    console.log(predictions.map(predictions => ({key: `${predictions.name} Accuracy: ${predictions.value}`,})))
+    console.log(filteredpredictions.map(filteredpredictions => ({key: `${filteredpredictions.name} Accuracy: ${filteredpredictions.value}`,})))
+
+
     if (hasCameraPermission === null) {
       return <View />;
     } else if (hasCameraPermission === false) {
@@ -138,12 +140,14 @@ export default class App extends React.Component {
                 }}
               >
                 <FlatList
-                  data={predictions.map(predictions => ({
-                    key: `${predictions.name} ${predictions.value}`,
+                  data={filteredpredictions.map(filteredpredictions => ({
+                    key: `${filteredpredictions.name} Accuracy: ${filteredpredictions.value}`,
                   }))}
-                  renderItem={({ item }) => (
+                  renderItem={({ item ,index}) => {return (
+                    <TouchableOpacity>
                     <Text style={{ paddingLeft: 15, color: 'white', fontSize: 20 }}>{item.key}</Text>
-                  )}
+                    </TouchableOpacity>
+                  )}}
                 />
               </View>
               <TouchableOpacity
@@ -157,7 +161,7 @@ export default class App extends React.Component {
               >
                 <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
                   {' '}
-                  Detaect Objects{' '}
+                  Scan{' '}
                 </Text>
               </TouchableOpacity>
             </View>
