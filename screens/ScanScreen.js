@@ -2,31 +2,20 @@
 // import {
 //     View,
 //     Text,
-//     TouchableOpacity
+//     TouchableOpacity,
+//     Button
 // } from 'react-native';
 
 // const ScanScreen = ({ navigation }) => {
-//     return (
-//         <View
-//             style={{
-//                 flex: 1,
-//                 alignItems: 'center',
-//                 justifyContent: 'center'
-//             }}
-//         >
-//             <Text>Scan an Unfamiliar Ingredient!{"\n"}</Text>
-//             <TouchableOpacity
-//                 onPress={() => navigation.navigate("Explore")}
-//             >
-//                 <Text>Navigate to Explore Screen</Text>
-//             </TouchableOpacity>
-//             <TouchableOpacity
-//                 onPress={() => navigation.navigate("Saved")}
-//             >
-//                 <Text>Navigate to Saved Screen</Text>
-//             </TouchableOpacity>
-//         </View>
-//     )
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Scan screen</Text>
+//       <Button
+//         title="Go to Additional context"
+//         onPress={() => navigation.navigate('Additional Context', { screen: 'Additional Context' })}
+//       />
+//     </View>
+//   )
 // }
 
 // export default ScanScreen;
@@ -38,15 +27,14 @@ import { Text, View, TouchableOpacity ,FlatList} from 'react-native';
 import { Camera } from 'expo-camera';
 import * as ImageManipulator from 'expo-image-manipulator';
 
-
 const Clarifai = require('clarifai');
 import ingredientContext from '../assets/ingredientContext';
 const ingredientContexttest = ingredientContext
-
 const clarifai = new Clarifai.App({
   apiKey: "0b4d4f4f0a604f5da3889f2139e48efc",
 });
 process.nextTick = setImmediate;
+
 
 export default class App extends React.Component {
   state = {
@@ -54,6 +42,7 @@ export default class App extends React.Component {
     predictions: [],
     filteredpredictions: []
   };
+  
   async componentDidMount() {
     const { status } = await Camera.requestCameraPermissionsAsync();
     this.setState({ hasCameraPermission: status === 'granted' });
@@ -90,7 +79,8 @@ export default class App extends React.Component {
     const { hasCameraPermission, predictions } = this.state;
     //console.log(predictions)
     let wanttokeep = Object.keys(ingredientContexttest)
-    //let wanttokeep =["vegetable","sweet"] photo of black screen normally has these as guesses, so this is easier test
+    //photo of black screen normally has these as guesses, so this is easier test
+    //let wanttokeep =["vegetable","sweet"] 
     let filteredpredictions =  Object.values(Object.fromEntries(Object.entries(predictions).filter(([k, pred]) => wanttokeep.some(culturalIngred => culturalIngred == pred.name))));
     //console.log("Did it filter?")
     //console.log(filteredpredictions)
@@ -131,7 +121,7 @@ export default class App extends React.Component {
                     key: `${filteredpredictions.name} Accuracy: ${filteredpredictions.value}`,
                   }))}
                   renderItem={({ item }) => {return (
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Additional Context",{itemKey: item.key})}>
                     <Text style={{ paddingLeft: 15, color: 'white', fontSize: 20 }}>{item.key}</Text>
                     </TouchableOpacity>
                   )}}

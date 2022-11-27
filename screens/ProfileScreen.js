@@ -5,7 +5,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-const ExploreScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
     return (
         <View
             style={{
@@ -14,19 +14,19 @@ const ExploreScreen = ({ navigation }) => {
                 justifyContent: 'center'
             }}
         >
-            <Text>This is the Explore Ingredients Screen {"\n"}</Text>
+            <Text>Profile!{"\n"}</Text>
+            <TouchableOpacity
+                onPress={() => navigation.navigate("Explore")}
+            >
+                <Text>Navigate to Explore Screen</Text>
+            </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => navigation.navigate("Scan")}
             >
                 <Text>Navigate to Scan Screen</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => navigation.navigate("Saved")}
-            >
-                <Text>Navigate to Saved Screen</Text>
-            </TouchableOpacity>
         </View>
     )
 }
 
-export default ExploreScreen;
+export default ProfileScreen;
