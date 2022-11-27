@@ -28,7 +28,7 @@ import { Camera } from 'expo-camera';
 import * as ImageManipulator from 'expo-image-manipulator';
 
 const Clarifai = require('clarifai');
-import ingredientContext from '../assets/ingredientContext';
+import ingredientContext from '../../assets/ingredientContext';
 const ingredientContexttest = ingredientContext
 const clarifai = new Clarifai.App({
   apiKey: "0b4d4f4f0a604f5da3889f2139e48efc",

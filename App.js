@@ -2,7 +2,7 @@ import { Text, View, StyleSheet ,Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, ExploreScreen, ScanScreen, SavedScreen , AdditionalContextScreen,ProfileScreen} from "./screens";
+import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, SavedScreen , AdditionalContextScreen,ProfileScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
 
 
@@ -23,7 +23,8 @@ export function TabNavigator() {
 const Stack = createStackNavigator()
 const ScanStack = () => {
     return (
-      <Stack.Navigator initialRoutName="ScanScreen">
+      <Stack.Navigator initialRoutName="ScanIntroScreen">
+         <Stack.Screen name="Scan Intro Screen" component={ScanIntroScreen}/>
          <Stack.Screen name="Scan Screen" component={ScanScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Additional Context" component={AdditionalContextScreen}  />
       </Stack.Navigator>
