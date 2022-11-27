@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
+import styles from '../../assets/styles/ScanFlow.style.js'
 
 const ScanIntroScreen = ({ navigation }) => {
     return (
@@ -17,11 +18,7 @@ const ScanIntroScreen = ({ navigation }) => {
             }}
         >
             <View
-                style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#0000ff'
-                }}
+                style={styles.container}
             >
                 <Image source={squashSoup}></Image>
                 <Text>Place your item within the frame and wait for the scan to complete.</Text>
