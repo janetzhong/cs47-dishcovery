@@ -6195,6 +6195,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
+"react-native-animated-progress@^1.0.2":
+  "integrity" "sha512-8EQSHTjT7QQY+u/Gknc1X4FxlV/8gRevi2wAlMIUQBf3fq13z++8WIGPPwwKvjsVcQJMm4cadTwn3Ptn5fiUJw=="
+  "resolved" "https://registry.npmjs.org/react-native-animated-progress/-/react-native-animated-progress-1.0.2.tgz"
+  "version" "1.0.2"
+
 "react-native-camera@~4.2.1":
   "integrity" "sha512-+Vkql24PFYQfsPRznJCvPwJQfyzCnjlcww/iZ4Ej80bgivKjL9eU0IMQIXp4yi6XCrKi4voWXxIDPMupQZKeIQ=="
   "resolved" "https://registry.npmjs.org/react-native-camera/-/react-native-camera-4.2.1.tgz"

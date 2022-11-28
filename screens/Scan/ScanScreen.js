@@ -1,25 +1,3 @@
-// import React from 'react';
-// import {
-//     View,
-//     Text,
-//     TouchableOpacity,
-//     Button
-// } from 'react-native';
-
-// const ScanScreen = ({ navigation }) => {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Scan screen</Text>
-//       <Button
-//         title="Go to Additional context"
-//         onPress={() => navigation.navigate('Additional Context', { screen: 'Additional Context' })}
-//       />
-//     </View>
-//   )
-// }
-
-// export default ScanScreen;
-
 import React from 'react';
 import { Text, View, TouchableOpacity ,FlatList} from 'react-native';
 //import { Camera, Permissions } from 'expo';
@@ -121,9 +99,11 @@ export default class App extends React.Component {
                     key: `${filteredpredictions.name} Accuracy: ${filteredpredictions.value}`,
                   }))}
                   renderItem={({ item }) => {return (
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Additional Context",{itemKey: item.key})}>
-                    <Text style={{ paddingLeft: 15, color: 'white', fontSize: 20 }}>{item.key}</Text>
-                    </TouchableOpacity>
+                    <View>
+                      <TouchableOpacity onPress={() => this.props.navigation.navigate("Scan Complete Screen", {itemKey: item.key})}>
+                      <Text style={{ paddingLeft: 15, color: 'white', fontSize: 20 }}>Scan Progress</Text>
+                      </TouchableOpacity>
+                    </View>
                   )}}
                 />
               </View>
