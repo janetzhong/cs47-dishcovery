@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ExploreScreen, ScanScreen, SavedScreen, ProfileScreen , LoginScreen } from "./screens";
+import { DishCard } from "./components/DishCard.js";
 
 const Tab = createBottomTabNavigator();
 

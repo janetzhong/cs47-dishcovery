@@ -7,5 +7,5 @@ import SavedScreen from "./SavedScreen"
 export {
     ScanScreen,
     ExploreScreen,
-    SavedScreen
+    SavedScreen, 
 }
