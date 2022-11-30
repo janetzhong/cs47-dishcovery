@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, View, TouchableOpacity ,FlatList} from 'react-native';
-//import { Camera, Permissions } from 'expo';
-// import * as Permissions from 'expo-permissions';
+import { Text, View, TouchableOpacity} from 'react-native';
 import { Camera } from 'expo-camera';
 import * as ImageManipulator from 'expo-image-manipulator';
+import ProgressBar from 'react-native-animated-progress';
+import CloseButton from '../../assets/styles/CloseButton.style';
 
 const Clarifai = require('clarifai');
 import ingredientContext from '../../assets/ingredientContext';
@@ -18,7 +18,11 @@ export default class App extends React.Component {
   state = {
     hasCameraPermission: null,
     predictions: [],
-    filteredpredictions: []
+    scanPressed: false,
+    ingredientRecognized: false,
+    ingredientNotRecognized: false,
+    scanComplete: false,
+    filteredPredictions: []
   };
   
   async componentDidMount() {
@@ -49,22 +53,35 @@ export default class App extends React.Component {
   objectDetection = async () => {
     let photo = await this.capturePhoto();
     let resized = await this.resize(photo);
-    let predictions = await this.predict(resized);
-    this.setState({ predictions: predictions.outputs[0].data.concepts });
+    let predictionsInitial = await this.predict(resized);
+    let wanttokeep = Object.keys(ingredientContexttest);
+    let predictions = predictionsInitial.outputs[0].data.concepts;
+    let filteredPredictionsMap =  Object.values(Object.fromEntries(Object.entries(predictions).filter(([k, pred]) => wanttokeep.some(culturalIngred => culturalIngred == pred.name))));
+    let filteredPredictions = filteredPredictionsMap.map(filteredPredictionsMap => ({
+      key: `${filteredPredictionsMap.name} Accuracy: ${filteredPredictionsMap.value}`,
+    }));
+    predictions ? console.log(filteredPredictions.length.toString()) : console.log("no");
+    this.setState({ predictions: predictionsInitial.outputs[0].data.concepts });
+    this.setState({ scanComplete: true });
+    console.log("agggghhhh");
+    this.setState({ ingredientRecognized: filteredPredictions.length > 0});
+    this.setState({ ingredientNotRecognized: filteredPredictions.length <= 0});
+    console.log(this.state.ingredientRecognized, this.state.ingredientNotRecognized)
+    this.setState({ filteredPredictions: filteredPredictions });
   };
+  renderProgress = async () => {
+    return 
+      <View>
+        <Text>Searching for item</Text>
+        <ProgressBar progress={100} height={7} backgroundColor="orange" />
+      </View>
+  }
+
 
   render() {
-    const { hasCameraPermission, predictions } = this.state;
-    //console.log(predictions)
+    const { hasCameraPermission, predictions, filteredPredictions } = this.state;
     let wanttokeep = Object.keys(ingredientContexttest)
-    //photo of black screen normally has these as guesses, so this is easier test
-    //let wanttokeep =["vegetable","sweet"] 
-    let filteredpredictions =  Object.values(Object.fromEntries(Object.entries(predictions).filter(([k, pred]) => wanttokeep.some(culturalIngred => culturalIngred == pred.name))));
-    //console.log("Did it filter?")
-    //console.log(filteredpredictions)
-
-    // TODO show a message differentiating if image recognition didn't work, vs if the result is not in cultural context list of ingredients
-
+    
     if (hasCameraPermission === null) {
       return <View />;
     } else if (hasCameraPermission === false) {
@@ -79,6 +96,15 @@ export default class App extends React.Component {
             style={{ flex: 1 }}
             type={this.state.type}
           >
+            {CloseButton({onPress: (() => this.props.navigation.navigate("Scan Intro Screen")), color: 'gray'})}
+            <View>
+              {this.state.scanPressed ? 
+                    <View>
+                      {(this.state.ingredientRecognized || this.state.ingredientNotRecognized) ? (this.state.ingredientRecognized ? <Text>Scan successful.</Text> : <Text>Scan failed!</Text>) : <Text>Searching for item</Text>}
+                      <ProgressBar progress={this.state.scanComplete ? 100: 50} height={7} backgroundColor="orange" />
+                    </View> 
+              : null}
+            </View>
             <View
               style={{
                 flex: 1,
@@ -87,40 +113,63 @@ export default class App extends React.Component {
                 justifyContent: 'flex-end'
               }}
             >
-              <View
-                style={{
-                  flex: 1,
-                  alignSelf: 'flex-start',
-                  alignItems: 'center',
-                }}
-              >
-                <FlatList
-                  data={filteredpredictions.map(filteredpredictions => ({
-                    key: `${filteredpredictions.name} Accuracy: ${filteredpredictions.value}`,
-                  }))}
-                  renderItem={({ item }) => {return (
-                    <View>
-                      <TouchableOpacity onPress={() => this.props.navigation.navigate("Scan Complete Screen", {itemKey: item.key})}>
-                      <Text style={{ paddingLeft: 15, color: 'white', fontSize: 20 }}>Scan Progress</Text>
-                      </TouchableOpacity>
-                    </View>
-                  )}}
-                />
-              </View>
-              <TouchableOpacity
-                style={{
-                  flex: 0.1,
-                  alignItems: 'center',
-                  backgroundColor: 'blue',
-                  height: '10%',
-                }}
-                onPress={this.objectDetection}
-              >
-                <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
-                  {' '}
-                  Scan{' '}
-                </Text>
-              </TouchableOpacity>
+              {this.state.scanPressed ? 
+                null :
+                <TouchableOpacity
+                  style={{
+                    flex: 0.1,
+                    alignItems: 'center',
+                    backgroundColor: 'blue',
+                    height: '10%',
+                  }}
+                  onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
+                >
+                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
+                    {' '}
+                    Scan{' '}
+                  </Text>
+                </TouchableOpacity> 
+              }
+              {this.state.ingredientRecognized ?
+                <TouchableOpacity
+                  style={{
+                    flex: 0.1,
+                    alignItems: 'center',
+                    backgroundColor: 'blue',
+                    height: '10%',
+                  }}
+                  onPress={() => {this.props.navigation.navigate("Additional Context", {itemKey: filteredPredictions[0].key})}}
+                >
+                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
+                    {' '}
+                    Ingredient Recognized{' '}
+                  </Text>
+                </TouchableOpacity> : null
+              }
+              {this.state.ingredientNotRecognized ?
+                <TouchableOpacity
+                  style={{
+                    flex: 0.1,
+                    alignItems: 'center',
+                    backgroundColor: 'blue',
+                    height: '10%',
+                  }}
+                  onPress={() => {  
+                    this.setState({
+                    predictions: [],
+                    scanPressed: false,
+                    ingredientRecognized: false,
+                    ingredientNotRecognized: false,
+                    scanComplete: false,
+                    filteredPredictions: []
+                  }); this.props.navigation.navigate("Scan Screen")}}
+                >
+                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
+                    {' '}
+                    Ingredient Not Recognized{' '}
+                  </Text>
+                </TouchableOpacity> : null
+              }
             </View>
           </Camera>
         </View>
