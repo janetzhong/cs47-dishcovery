@@ -24,7 +24,7 @@ const ScanIntroScreen = ({ navigation }) => {
                 <Image source={pumpkinsoup} style = {styles.image}></Image>
             </View>
             <View style={styles.imageText}>
-            <Text style={styles.TextStyle}>Place your item within the frame and wait for the scan to complete.</Text>
+            <Text style={styles.TextStyle}>Place your item within the frame and click to scan.</Text>
             </View>
             
             <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Screen")}>

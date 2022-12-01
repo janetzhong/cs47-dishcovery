@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity} from 'react-native';
+import { Text, View, TouchableOpacity, Image, ImageBackground} from 'react-native';
 import { Camera } from 'expo-camera';
 import * as ImageManipulator from 'expo-image-manipulator';
 import ProgressBar from 'react-native-animated-progress';
@@ -16,6 +16,7 @@ process.nextTick = setImmediate;
 
 
 export default class App extends React.Component {
+  
   state = {
     hasCameraPermission: null,
     predictions: [],
@@ -74,7 +75,7 @@ export default class App extends React.Component {
     return 
       <View>
         <Text>Searching for item</Text>
-        <ProgressBar progress={100} height={7} backgroundColor="orange" />
+        <ProgressBar progress={100} height={7} backgroundColor="orange" /> 
       </View>
   }
 
@@ -90,6 +91,7 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={{ flex: 1 }}>
+
           <Camera
             ref={ref => {
               this.camera = ref;
@@ -98,14 +100,25 @@ export default class App extends React.Component {
             type={this.state.type}
           >
             {CloseButton({onPress: (() => this.props.navigation.navigate("Scan Intro Screen")), color: 'gray'})}
-            <View>
+            <View style={styles.messageContainer}>
               {this.state.scanPressed ? 
-                    <View>
-                      {(this.state.ingredientRecognized || this.state.ingredientNotRecognized) ? (this.state.ingredientRecognized ? <Text>Scan successful.</Text> : <Text>Scan failed!</Text>) : <Text>Searching for item</Text>}
-                      <ProgressBar progress={this.state.scanComplete ? 100: 50} height={7} backgroundColor="orange" />
+                    <View style={styles.progressBarContainer}>
+                      {(this.state.ingredientRecognized || this.state.ingredientNotRecognized) ? (this.state.ingredientRecognized ? <Text style = {styles.messageText}>Scan successful.</Text> : <Text style = {styles.messageText}>Scan failed!</Text>) : <Text style = {styles.messageText}>Searching for item</Text>}
+                      <ProgressBar progress={this.state.scanComplete ? 100: 50} height={7} 
+                      backgroundColor={(this.state.ingredientNotRecognized || this.state.ingredientRecognized) ? (this.state.ingredientRecognized ? "green" : "firebrick") : "white"} />
                     </View> 
-              : <Text>Place item within the square before scanning.</Text>}
+              : <Text style = {styles.messageText}>Place item within the frame and scan </Text>}
             </View>
+            {this.state.scanComplete ? 
+            null:<Image source={require('../../assets/scan_gif.gif')} style = { styles.scanningGif}></Image>
+            }
+            {this.state.ingredientNotRecognized ? 
+            <Image source={require('../../assets/scan_red.png')} style = { styles.scanningImage}></Image>:null
+            }
+            {this.state.ingredientRecognized ? 
+            <Image source={require('../../assets/scan_green.png')} style = { styles.scanningImage}></Image>:null
+            }
+
             <View
               style={{
                 flex: 1,
@@ -128,7 +141,7 @@ export default class App extends React.Component {
                 style={styles.buttonContainer} activeOpacity = { .5 }
                   onPress={() => {this.props.navigation.navigate("Additional Context", {itemKey: filteredPredictions[0].key})}}
                 >
-                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized</Text>
+                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized → </Text>
                 </TouchableOpacity> : null
               }
               {this.state.ingredientNotRecognized ?
@@ -137,14 +150,15 @@ export default class App extends React.Component {
                   onPress={() => {  
                     this.setState({
                     predictions: [],
-                    scanPressed: false,
+                    scanPressed: true,
                     ingredientRecognized: false,
                     ingredientNotRecognized: false,
                     scanComplete: false,
-                    filteredPredictions: []
-                  }); this.props.navigation.navigate("Scan Screen")}}
+                    filteredPredictions: [],
+                    
+                  }); this.objectDetection()}}//this.props.navigation.navigate("Scan Screen")}}
                 >
-                  <Text style={styles.ButtonTextStyle} activeOpacity = { .5 }>Ingredient Not Recognized</Text>
+                  <Text style={styles.ButtonTextStyle} activeOpacity = { .5 }>Rescan</Text>
                 </TouchableOpacity> : null
               }
             </View>

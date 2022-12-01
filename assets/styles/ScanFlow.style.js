@@ -1,4 +1,7 @@
 import { StyleSheet } from 'react-native';
+import { useFonts } from 'expo-font';
+
+
 
 export default StyleSheet.create({
   container: {
@@ -51,21 +54,96 @@ export default StyleSheet.create({
       height:80,
       marginLeft:30,
       marginRight:30,
-      marginBottom:60,
+      marginBottom:20,
+      marginTop: 20,
       padding:30,
       backgroundColor:'#DD6135',
       borderRadius:20,
-      flexDirection:'column'
+      flexDirection:'column',
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 5,
     },
     TextStyle: {
       fontSize: 15,
       textAlign: 'center',
-      fontFamily: 'Inter-SemiBold'
+      fontFamily: 'Inter'
     },
     ButtonTextStyle: {
       fontSize: 15,
       textAlign: 'center',
       color: 'white',
-      fontFamily: 'Inter-SemiBold',
+      fontFamily: 'Inter',
+    },
+    messageContainer:{
+      alignItems: "center",
+      justifyContent: "center",
+      alignSelf: "center",
+      height:40,
+      width:"100%",
+      marginLeft:30,
+      marginRight:30,
+      marginBottom:0,
+      //marginTop:-20,
+      padding:10,
+      backgroundColor:'transparent',
+      borderRadius:10,
+      flexDirection:'column',
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowOpacity: 0.05,
+      shadowRadius: 5,
+    },
+    messageText:{
+      color: "white",
+      textAlign: 'center',
+      alignText: "center",
+      marginBottom: 5
+    },
+    progressBarContainer:{
+      width: "85%",
+    },
+    scanningGif:{
+      flex:4,
+      resizeMode:'contain', 
+      alignSelf:'center',
+      alignItems: "center", 
+      justifyContent: "center",       
+      // borderWidth: 1,
+      //  borderColor: 'red',
+       height: '30%',
+        width: '90%',
+        opacity: 0.5,
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 5,
+      
+    },
+    scanningImage:{
+      flex:4,
+      resizeMode:'contain', 
+      alignSelf:'center',
+      alignItems: "center", 
+      justifyContent: "center",       
+      // borderWidth: 1,
+      //  borderColor: 'red',
+       height: '30%',
+        width: '90%',
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 5,
+      
     }
+    
 });

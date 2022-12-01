@@ -2,8 +2,8 @@ import React from 'react';
 import {TouchableOpacity,StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const BUTTON_SIZE = 30
-const BORDER_WIDTH = 1
+const BUTTON_SIZE = 40
+const BORDER_WIDTH = 0
 
 function CloseButton(props){
     return (
@@ -20,6 +20,15 @@ const styles = StyleSheet.create({
         height:BUTTON_SIZE+BORDER_WIDTH,
         borderWidth:BORDER_WIDTH,
         borderRadius:BUTTON_SIZE/2,
+        alignSelf: 'flex-end',
+        marginRight: 15,
+        marginTop: 15,
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 5,
     }
 })
 export default CloseButton;

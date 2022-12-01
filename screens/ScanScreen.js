@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import * as ImageManipulator from 'expo-image-manipulator';
 import ProgressBar from 'react-native-animated-progress';
 import CloseButton from '../../assets/styles/CloseButton.style';
-
+import styles from '../../assets/styles/ScanFlow.style';
 const Clarifai = require('clarifai');
 import ingredientContext from '../../assets/ingredientContext';
 const ingredientContexttest = ingredientContext
@@ -96,7 +96,9 @@ export default class App extends React.Component {
             style={{ flex: 1 }}
             type={this.state.type}
           >
-            {CloseButton({onPress: (() => this.props.navigation.navigate("Scan Intro Screen")), color: 'gray'})}
+            <View style = {{flexDirection: 'row-reverse', alignItems: "right", flex: 1}}>
+              {CloseButton({onPress: (() => this.props.navigation.navigate("Scan Intro Screen")), color: 'black'})}
+            </View>
             <View>
               {this.state.scanPressed ? 
                     <View>
@@ -124,10 +126,7 @@ export default class App extends React.Component {
                   }}
                   onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
                 >
-                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
-                    {' '}
-                    Scan{' '}
-                  </Text>
+                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>Scan</Text>
                 </TouchableOpacity> 
               }
               {this.state.ingredientRecognized ?
@@ -140,10 +139,7 @@ export default class App extends React.Component {
                   }}
                   onPress={() => {this.props.navigation.navigate("Additional Context", {itemKey: filteredPredictions[0].key})}}
                 >
-                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
-                    {' '}
-                    Ingredient Recognized{' '}
-                  </Text>
+                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>Ingredient Recognized</Text>
                 </TouchableOpacity> : null
               }
               {this.state.ingredientNotRecognized ?
@@ -164,10 +160,7 @@ export default class App extends React.Component {
                     filteredPredictions: []
                   }); this.props.navigation.navigate("Scan Screen")}}
                 >
-                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
-                    {' '}
-                    Ingredient Not Recognized{' '}
-                  </Text>
+                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>Ingredient Not Recognized</Text>
                 </TouchableOpacity> : null
               }
             </View>
