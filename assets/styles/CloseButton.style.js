@@ -10,7 +10,6 @@ function CloseButton(props){
         <TouchableOpacity onPress={props.onPress} style={[styles.button,{backgroundColor:'white',borderColor:props.color}]}>
             <Icon name={'close'} color={props.color} size={BUTTON_SIZE/2} />
         </TouchableOpacity>
-
     )
 }
 const styles = StyleSheet.create({

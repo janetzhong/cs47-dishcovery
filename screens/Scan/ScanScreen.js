@@ -4,6 +4,7 @@ import { Camera } from 'expo-camera';
 import * as ImageManipulator from 'expo-image-manipulator';
 import ProgressBar from 'react-native-animated-progress';
 import CloseButton from '../../assets/styles/CloseButton.style';
+import styles from '../../assets/styles/ScanFlow.style'
 
 const Clarifai = require('clarifai');
 import ingredientContext from '../../assets/ingredientContext';
@@ -103,7 +104,7 @@ export default class App extends React.Component {
                       {(this.state.ingredientRecognized || this.state.ingredientNotRecognized) ? (this.state.ingredientRecognized ? <Text>Scan successful.</Text> : <Text>Scan failed!</Text>) : <Text>Searching for item</Text>}
                       <ProgressBar progress={this.state.scanComplete ? 100: 50} height={7} backgroundColor="orange" />
                     </View> 
-              : null}
+              : <Text>Place item within the square before scanning.</Text>}
             </View>
             <View
               style={{
@@ -116,44 +117,23 @@ export default class App extends React.Component {
               {this.state.scanPressed ? 
                 null :
                 <TouchableOpacity
-                  style={{
-                    flex: 0.1,
-                    alignItems: 'center',
-                    backgroundColor: 'blue',
-                    height: '10%',
-                  }}
+                  style={styles.buttonContainer} activeOpacity = { .5 }
                   onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
                 >
-                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
-                    {' '}
-                    Scan{' '}
-                  </Text>
+                  <Text style={styles.ButtonTextStyle}>Scan</Text>
                 </TouchableOpacity> 
               }
               {this.state.ingredientRecognized ?
                 <TouchableOpacity
-                  style={{
-                    flex: 0.1,
-                    alignItems: 'center',
-                    backgroundColor: 'blue',
-                    height: '10%',
-                  }}
+                style={styles.buttonContainer} activeOpacity = { .5 }
                   onPress={() => {this.props.navigation.navigate("Additional Context", {itemKey: filteredPredictions[0].key})}}
                 >
-                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
-                    {' '}
-                    Ingredient Recognized{' '}
-                  </Text>
+                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized</Text>
                 </TouchableOpacity> : null
               }
               {this.state.ingredientNotRecognized ?
                 <TouchableOpacity
-                  style={{
-                    flex: 0.1,
-                    alignItems: 'center',
-                    backgroundColor: 'blue',
-                    height: '10%',
-                  }}
+                style={styles.buttonContainer}
                   onPress={() => {  
                     this.setState({
                     predictions: [],
@@ -164,10 +144,7 @@ export default class App extends React.Component {
                     filteredPredictions: []
                   }); this.props.navigation.navigate("Scan Screen")}}
                 >
-                  <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>
-                    {' '}
-                    Ingredient Not Recognized{' '}
-                  </Text>
+                  <Text style={styles.ButtonTextStyle} activeOpacity = { .5 }>Ingredient Not Recognized</Text>
                 </TouchableOpacity> : null
               }
             </View>
