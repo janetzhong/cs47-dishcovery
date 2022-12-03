@@ -16,7 +16,6 @@ process.nextTick = setImmediate;
 
 
 export default class App extends React.Component {
-  
   state = {
     hasCameraPermission: null,
     predictions: [],
