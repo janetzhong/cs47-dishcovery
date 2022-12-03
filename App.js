@@ -4,7 +4,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, ScanCompleteScreen, SavedScreen , AdditionalContextScreen,ProfileScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
+import {COLORS } from "./constants";
 
+import useFonts from './hooks/useFonts';
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import React, { useState } from 'react';
 
 const Tab = createBottomTabNavigator()
 
@@ -19,7 +24,6 @@ export function TabNavigator() {
         </Tab.Navigator>
    )
 }
-import { DishCard } from "./components/DishCard.js";
 
 const Stack = createStackNavigator()
 const ScanStack = () => {
@@ -34,88 +38,67 @@ const ScanStack = () => {
 }
 
 export default function App() {
+  const [IsReady, SetIsReady] = useState(false);
+  const LoadFonts = async () => {
+    await useFonts();
+  };
+
+  if (!IsReady) {
+    return (
+      <AppLoading
+        startAsync={LoadFonts}
+        onFinish={() => SetIsReady(true)}
+        onError={() => {}}
+      />
+    );
+  }
 
   return (
     <NavigationContainer>
       <Tab.Navigator
-        tabBarOptions={{
-          labelStyle: { fontSize: 14 },
-        }}
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused }) => {
+          tabBarActiveTintColor: COLORS.dishcoveryOrange,
+          tabBarInactiveTintColor: "grey",
+          tabBarLabelStyle: { 
+            fontSize: 14,
+            fontFamily: 'InterRegular',
+            position: 'absolute',
+            bottom:-15,
+            left:20,
+            right:20,
+          },
+          tabBarStyle : {
+            position: 'absolute',
+            bottom:25,
+            left:20,
+            right:20,
+            elevation:0,
+            backgroundColor: 'white',
+            borderRadius:15,
+            height:80,
+            padding:10
+          },
+
+          tabBarIcon: ({ focused, color }) => {
             let iconName;
-
+            color = focused ? COLORS.dishcoveryOrange : "grey";
             if (route.name === 'Explore') {
-              iconName = focused ? 'search' : 'search-outline';
+              //iconName = focused ? 'location' : 'location-outline';
+              iconName = 'location';
             } else if (route.name === 'Scan') {
-              iconName = focused ? 'camera' : 'camera-outline';
-            } else if (route.name === 'Saved') {
-              iconName = focused ? 'bookmark' : 'bookmark-outline';
-            } else if (route.name === 'Profile') {
-              iconName = focused ? 'person-circle' : 'person-circle-outline';
-            } else if (route.name === 'Home') {
-              iconName = focused ? 'home' : 'home-outline';
-            }
-
-            return <Ionicons name={iconName} size={24} color="black" />;
+              iconName = 'scan-circle';
+            } else if (route.name === 'Liked') {
+              iconName = 'heart';
+            } 
+            return <Ionicons name={iconName} size={28} color= {color} />;
           } 
         })}>
-        <Tab.Screen name="Home" component={HomeScreen} />          
+        {/* <Tab.Screen name="Home" component={HomeScreen} />           */}
         <Tab.Screen name="Explore" component={ExploreScreen} />
         <Tab.Screen name="Scan" component={ScanStack} />
-        <Tab.Screen name="Saved" component={SavedScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="Liked" component={SavedScreen} />
+        {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
-
-
-
-
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <Tab.Navigator
-//         tabBarOptions={{
-//           labelStyle: { fontSize: 14 },
-//         }}
-//         screenOptions={({ route }) => ({
-//           tabBarIcon: ({ focused }) => {
-//             let iconName;
-
-//             if (route.name === 'Explore') {
-//               iconName = focused ? 'search' : 'search-outline';
-//             } else if (route.name === 'Scan') {
-//               iconName = focused ? 'camera' : 'camera-outline';
-//             } else if (route.name === 'Saved') {
-//               iconName = focused ? 'bookmark' : 'bookmark-outline';
-//             } else if (route.name === 'Profile') {
-//               iconName = focused ? 'person-circle' : 'person-circle-outline';
-//             }
-            
-
-//             return <Ionicons name={iconName} size={24} color="black" />;
-//           } 
-//         })}>
-//         <Tab.Screen name="Explore" component={ExploreScreen} />
-//         {/* <Tab.Screen name="Scan" component={ScanStackScreen} /> */}
-//         <Tab.Screen name="Feed" component={FeedStackScreen} />
-//         <Tab.Screen name="Saved" component={SavedScreen} />
-//       </Tab.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   screenContainer: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   },
-//   screenText: {
-//     fontSize: 32,
-//   },
-// });

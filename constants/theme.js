@@ -2,6 +2,10 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 export const COLORS = {
+    // Dishcovery
+    dishcoveryOrange : '#DD6135',
+
+    // old file
     darkGreen: "#229879",
     darkLime: "#1A8871",
     lightLime: "#BBD6C5",
@@ -53,7 +57,7 @@ export const SIZES = {
     height
 };
 export const FONTS = {
-    largeTitle: { fontFamily: "Roboto-Black", fontSize: SIZES.largeTitle },
+    largeTitle: { fontFamily: "Inter-Black", fontSize: SIZES.largeTitle },
     h1: { fontFamily: "Roboto-Black", fontSize: SIZES.h1, lineHeight: 36 },
     h2: { fontFamily: "Roboto-Bold", fontSize: SIZES.h2, lineHeight: 30 },
     h3: { fontFamily: "Roboto-Bold", fontSize: SIZES.h3, lineHeight: 22 },
