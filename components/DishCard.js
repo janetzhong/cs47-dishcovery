@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 // import { BlurView } from "@react-native-community/blur";
 import { SIZES, COLORS, FONTS, icons } from "../constants";
+import { Ionicons } from '@expo/vector-icons';
 
 
 const RecipeCardDetails = ({recipeItem}) => {
@@ -29,7 +30,7 @@ const RecipeCardDetails = ({recipeItem}) => {
                 <Text 
                     style = {{
                         width: "70%",
-                        color: COLORS.black,
+                        color: COLORS.white,
                         ...FONTS.h3,
                         fontSize: 18,
                     }}>
@@ -93,7 +94,7 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
     return (
         <TouchableOpacity
         style={{
-            height: 350,
+            height: 250,
             width: 250,
             marginTop: SIZES.radius,
             marginRight: 20,
@@ -107,10 +108,11 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
                 resizeMode="cover"
                 style={{
                     width: 250,
-                    height: 350,
+                    height: 250,
                     borderRadius: SIZES.radius
-                }}>
-
+                }}
+                imageStyle={{ borderRadius: SIZES.radius}}>
+                
                 {/*Card Info*/}  
                 <RecipeCardInfo
                     recipeItem={recipeItem}

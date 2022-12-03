@@ -1,15 +1,15 @@
-import { Text, View, StyleSheet ,Button} from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, ScanCompleteScreen, SavedScreen , AdditionalContextScreen,ProfileScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
-
-import useFonts from './hooks/useFonts';
-import * as Font from 'expo-font';
+import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import React, { useState } from 'react';
+
+// import * as SplashScreen from 'expo-splash-screen';
+// SplashScreen.preventAutoHideAsync();
 
 const Tab = createBottomTabNavigator()
 
@@ -38,20 +38,14 @@ const ScanStack = () => {
 }
 
 export default function App() {
-  const [IsReady, SetIsReady] = useState(false);
-  const LoadFonts = async () => {
-    await useFonts();
-  };
-
-  if (!IsReady) {
-    return (
-      <AppLoading
-        startAsync={LoadFonts}
-        onFinish={() => SetIsReady(true)}
-        onError={() => {}}
-      />
-    );
-  }
+  let [fontsLoaded] = useFonts({
+    'Inter-Regular': require('./assets/fonts/Inter-Regular.ttf'),
+    'Inter-Black': require('./assets/fonts/Inter-Black.ttf'),
+    'Inter-Bold': require('./assets/fonts/Inter-Bold.ttf'),
+    'Inter-Medium': require('./assets/fonts/Inter-Medium.ttf'),
+    'Inter-SemiBold': require('./assets/fonts/Inter-SemiBold.ttf')
+  });
+  if (!fontsLoaded) return <AppLoading />;
 
   return (
     <NavigationContainer>
@@ -61,7 +55,7 @@ export default function App() {
           tabBarInactiveTintColor: "grey",
           tabBarLabelStyle: { 
             fontSize: 14,
-            fontFamily: 'InterRegular',
+            fontFamily: 'Inter-Medium',
             position: 'absolute',
             bottom:-15,
             left:20,
@@ -76,7 +70,19 @@ export default function App() {
             backgroundColor: 'white',
             borderRadius:15,
             height:80,
-            padding:10
+            padding:10,
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+            shadowOpacity: 0.1,
+            shadowRadius: 5,
+          },
+          headerTitleStyle: {
+            fontFamily: 'Inter-SemiBold',
+            textTransform: 'uppercase',
+            color: COLORS.dishcoveryOrange
           },
 
           tabBarIcon: ({ focused, color }) => {
@@ -94,7 +100,7 @@ export default function App() {
           } 
         })}>
         {/* <Tab.Screen name="Home" component={HomeScreen} />           */}
-        <Tab.Screen name="Explore" component={ExploreScreen} />
+        <Tab.Screen name="Explore" component={ExploreScreen}  />
         <Tab.Screen name="Scan" component={ScanStack} />
         <Tab.Screen name="Liked" component={SavedScreen} />
         {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
