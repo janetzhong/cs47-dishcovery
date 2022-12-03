@@ -23,7 +23,8 @@ export default class App extends React.Component {
     ingredientRecognized: false,
     ingredientNotRecognized: false,
     scanComplete: false,
-    filteredPredictions: []
+    filteredPredictions: [],
+    ingredientName: ''
   };
   
   async componentDidMount() {
@@ -64,10 +65,11 @@ export default class App extends React.Component {
     predictions ? console.log(filteredPredictions.length.toString()) : console.log("no");
     this.setState({ predictions: predictionsInitial.outputs[0].data.concepts });
     this.setState({ scanComplete: true });
-    console.log("agggghhhh");
     this.setState({ ingredientRecognized: filteredPredictions.length > 0});
     this.setState({ ingredientNotRecognized: filteredPredictions.length <= 0});
     console.log(this.state.ingredientRecognized, this.state.ingredientNotRecognized)
+    this.state.ingredientRecognized ? console.log(filteredPredictions[0]['key'].split(" Accuracy").shift()): null
+    this.setState({ingredientName: (this.state.ingredientRecognized ? filteredPredictions[0]['key'].split(" Accuracy").shift() : null)})
     this.setState({ filteredPredictions: filteredPredictions });
   };
   renderProgress = async () => {
@@ -140,7 +142,7 @@ export default class App extends React.Component {
                 style={styles.buttonContainer} activeOpacity = { .5 }
                   onPress={() => {this.props.navigation.navigate("Additional Context", {itemKey: filteredPredictions[0].key})}}
                 >
-                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized → </Text>
+                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized: {this.state.ingredientName} → </Text>
                 </TouchableOpacity> : null
               }
               {this.state.ingredientNotRecognized ?
