@@ -54,7 +54,7 @@ export default StyleSheet.create({
       height:80,
       marginLeft:30,
       marginRight:30,
-      marginBottom:20,
+      marginBottom:130,
       marginTop: 20,
       padding:30,
       backgroundColor:'#DD6135',
@@ -70,13 +70,13 @@ export default StyleSheet.create({
     TextStyle: {
       fontSize: 15,
       textAlign: 'center',
-      fontFamily: 'Inter'
+      fontFamily: 'Inter-Regular'
     },
     ButtonTextStyle: {
       fontSize: 15,
       textAlign: 'center',
       color: 'white',
-      fontFamily: 'Inter',
+      fontFamily: 'Inter-Regular',
     },
     messageContainer:{
       alignItems: "center",
@@ -109,7 +109,7 @@ export default StyleSheet.create({
       width: "85%",
     },
     scanningGif:{
-      flex:4,
+      flex:1.6,
       resizeMode:'contain', 
       alignSelf:'center',
       alignItems: "center", 
@@ -128,7 +128,7 @@ export default StyleSheet.create({
       
     },
     scanningImage:{
-      flex:4,
+      flex:1.6,
       resizeMode:'contain', 
       alignSelf:'center',
       alignItems: "center", 

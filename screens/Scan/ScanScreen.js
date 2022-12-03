@@ -109,13 +109,13 @@ export default class App extends React.Component {
               : <Text style = {styles.messageText}>Place item within the frame and scan </Text>}
             </View>
             {this.state.scanComplete ? 
-            null:<Image source={require('../../assets/scan_gif.gif')} style = { styles.scanningGif}></Image>
+            null:<Image source={require('../../assets/images/scanpage/scan_gif.gif')} style = { styles.scanningGif}></Image>
             }
             {this.state.ingredientNotRecognized ? 
-            <Image source={require('../../assets/scan_red.png')} style = { styles.scanningImage}></Image>:null
+            <Image source={require('../../assets/images/scanpage/scan_red.png')} style = { styles.scanningImage}></Image>:null
             }
             {this.state.ingredientRecognized ? 
-            <Image source={require('../../assets/scan_green.png')} style = { styles.scanningImage}></Image>:null
+            <Image source={require('../../assets/images/scanpage/scan_green.png')} style = { styles.scanningImage}></Image>:null
             }
 
             <View
