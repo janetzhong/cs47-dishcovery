@@ -31,7 +31,7 @@ export default class App extends React.Component {
     })
   }
 
-  useEffect() {
+  useEffect(capItemName) {
     this.props.navigation.setOptions({title: capItemName})
     this.props.navigation.setOptions({headerBackTitle: 'Back'})
   }
@@ -41,6 +41,7 @@ export default class App extends React.Component {
     const itemKeySplit = itemKey.split(" Accuracy");     // ['bitter melon, ' Accuracy 0.99...'] This is not a good way to do it because it requires Accuracy be in that string but i was confused how to send filteredPredictions to params and so i sent item.key instead
     const itemName = itemKeySplit.shift(); 
     const capItemName = this.capitalizeFirstLetters(itemName);
+    this.useEffect(capItemName)
     const CONTENT = [
       {
         id: '96',

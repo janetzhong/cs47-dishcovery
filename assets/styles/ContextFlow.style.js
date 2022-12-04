@@ -22,7 +22,7 @@ export default StyleSheet.create({
             width: 0,
             height: 3,
         },
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.1,
         shadowRadius: 5,
         backgroundColor: "white",
     },
@@ -34,25 +34,18 @@ export default StyleSheet.create({
         borderTopLeftRadius:0,
         borderBottomRightRadius:20,
         borderBottomLeftRadius:20,     
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 3,
-            height: 3,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
         backgroundColor: "white",
     },
     TextStyle: {
         fontSize: 15,
         textAlign: 'left',
         fontFamily: 'Inter-Regular',
-
     },
     textContainerStyle: {
         marginTop: 10,
         marginBottom: 20,
         marginLeft: 10,
+        backgroundColor: "white",
     },
     imageBox:{
         //flex: 6,

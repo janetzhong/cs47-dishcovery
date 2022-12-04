@@ -8,6 +8,10 @@ import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 // import * as SplashScreen from 'expo-splash-screen';
 // SplashScreen.preventAutoHideAsync();
 
