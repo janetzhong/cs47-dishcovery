@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, SavedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
+import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
@@ -22,7 +22,7 @@ export function TabNavigator() {
         <Tab.Navigator>
            <Tab.Screen name='Explore' component={ExploreStack}/>
            <Tab.Screen name='Scan' component={ScanStack}/>
-           <Tab.Screen name='Saved' component={SavedScreen}/>
+           <Tab.Screen name='Liked' component={LikedScreen}/>
            {/* <Tab.Screen name='Profile' component={ProfileScreen}/> */}
         </Tab.Navigator>
    )
@@ -124,7 +124,7 @@ export default function App() {
         {/* <Tab.Screen name="Home" component={HomeScreen} />           */}
         <Tab.Screen name="Explore" component={ExploreStack}  />
         <Tab.Screen name="Scan" component={ScanStack} />
-        <Tab.Screen name="Liked" component={SavedScreen} />
+        <Tab.Screen name="Liked" component={LikedScreen} />
         {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>

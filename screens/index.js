@@ -1,7 +1,7 @@
 import ScanScreen from "./Scan/ScanScreen"
 import ScanIntroScreen from "./Scan/ScanIntroScreen"
 import ExploreScreen from "./ExploreScreen"
-import SavedScreen from "./SavedScreen"
+import LikedScreen from "./LikedScreen"
 import AdditionalContextScreen from "./AdditionalContextScreen"
 import ProfileScreen from "./ProfileScreen"
 import HomeScreen from "./HomeScreen"
@@ -12,7 +12,7 @@ export {
     RecipeScreen,
     ScanIntroScreen,
     ExploreScreen,
-    SavedScreen,
+    LikedScreen,
     AdditionalContextScreen,
     ProfileScreen,
     HomeScreen
