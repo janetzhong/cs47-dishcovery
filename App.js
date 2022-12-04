@@ -32,7 +32,17 @@ export function TabNavigator() {
 const Stack = createStackNavigator()
 const ScanStack = () => {
     return (
-      <Stack.Navigator initialRoutName="ScanIntroScreen">
+      <Stack.Navigator 
+        screenOptions={{
+          headerTitleStyle: {
+            color: 'black'
+          },
+          headerBackTitleStyle: {
+            color: '#DD6135'
+          },
+          headerTintColor: '#DD6135'
+        }}
+        initialRoutName="ScanIntroScreen">
          <Stack.Screen name="Scan Intro Screen" component={ScanIntroScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Scan Screen" component={ScanScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Additional Context" component={AdditionalContextScreen}  />

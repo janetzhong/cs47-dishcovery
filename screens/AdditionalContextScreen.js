@@ -154,7 +154,7 @@ export default class App extends React.Component {
           ExpandableListViewStyles={styles.container}
           itemContainerStyle={styles.outerExpandBox}
           innerItemContainerStyle={styles.innerExpandBox}
-          chevronColor="black"
+          customChevron={require('../assets/icons/chevron.jpeg')}
         />
         
         <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Explore")}>
