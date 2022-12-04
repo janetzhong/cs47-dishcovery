@@ -42,6 +42,16 @@ export default class App extends React.Component {
     const itemName = itemKeySplit.shift(); 
     const capItemName = this.capitalizeFirstLetters(itemName);
     this.useEffect(capItemName)
+    switch(ingredientContexttest[itemName]["image"]) {
+      case 'bittermelon':
+        var imageName = bittermelon
+        break;
+      case 'cardamom':
+        var imageName = cardamom
+        break;
+      case 'lemongrass':
+        var imageName = lemongrass
+    }
     const CONTENT = [
       {
         id: '96',
@@ -52,6 +62,9 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["flavor profile/texture"]}</Text>
                 </View>
@@ -69,6 +82,9 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["cultural context"]}</Text>
                 </View>
@@ -86,6 +102,9 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["origins and geography"]}</Text>
                 </View>
@@ -103,6 +122,9 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["health benefits"]}</Text>
                 </View>
@@ -120,18 +142,6 @@ export default class App extends React.Component {
     function handleInnerItemClick({innerIndex, item, itemIndex}) {
       console.log(innerIndex);
     };
-    
-    
-    switch(ingredientContexttest[itemName]["image"]) {
-      case 'bittermelon':
-        var imageName = bittermelon
-        break;
-      case 'cardamom':
-        var imageName = cardamom
-        break;
-      case 'lemongrass':
-        var imageName = lemongrass
-    }
     
     return (
 
