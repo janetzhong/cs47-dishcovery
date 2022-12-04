@@ -54,7 +54,7 @@ export default class App extends React.Component {
     }
     const CONTENT = [
       {
-        id: '96',
+        id: '97',
         categoryName: 'Flavor/Texture Profile',
         subCategory: [
           {
@@ -67,6 +67,26 @@ export default class App extends React.Component {
                 </View>
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["flavor profile/texture"]}</Text>
+                </View>
+              </View> 
+            ),
+          },
+        ],
+      },
+      {
+        id: '96',
+        categoryName: 'Alternate Names',
+        subCategory: [
+          {
+            id: '1',
+            name: '',
+            customInnerItem: (
+              <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
+                <View style={styles.textContainerStyle}>
+                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["alternate names"]}</Text>
                 </View>
               </View> 
             ),

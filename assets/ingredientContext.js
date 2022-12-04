@@ -5,13 +5,15 @@ export default {
         "cultural context": "some other blurb",
         "origins and geography": "other bittery blurb",
         "image": "bittermelon",
+        "alternate names": "bitter gourd\nkarela",
     },
     "lemongrass": {
         "flavor profile/texture": "lemony",
         "health benefits": "some blurb or something",
         "cultural context": "some other lemony blurb",      
         "origins and geography": "additional lemony blurb",
-        "image": "lemongrass",   
+        "image": "lemongrass",
+        "alternate names": "grassy lemon\nlemony grass",   
     },
     "cardamom": {
         "flavor profile/texture": "cardamom",
@@ -19,5 +21,6 @@ export default {
         "cultural context": "some other cardamomy blurb",      
         "origins and geography": "additional cardamomy blurb",
         "image": "cardamom", 
+        "alternate names": "elaichi\nyalakkaya",
     }
 };

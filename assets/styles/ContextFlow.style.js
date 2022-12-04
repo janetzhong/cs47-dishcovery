@@ -1,8 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 
-
-
 export default StyleSheet.create({
   container: {
       flex:1,
@@ -11,7 +9,7 @@ export default StyleSheet.create({
     outerExpandBox:{
         marginLeft:30,
         marginRight:30,
-        marginTop:35,
+        marginTop:30,
         marginBottom:-16,
         borderTopRightRadius:20,
         borderTopLeftRadius:20,
@@ -58,12 +56,12 @@ export default StyleSheet.create({
         borderTopLeftRadius:20,
         borderBottomRightRadius:20,
         borderBottomLeftRadius:20,  
-        height:"50%"
+        height:"47%"
     },
     image:{
         //flex: 1,
         width: '100%',
-        height:"60%",
+        height:"58%",
         borderTopRightRadius:20,
         borderTopLeftRadius:20,
         borderBottomRightRadius:20,
@@ -80,7 +78,7 @@ export default StyleSheet.create({
         borderBottomRightRadius:20,
         borderBottomLeftRadius:20,
         width:270,
-        height:200,
+        height:180,
         justifyContent: 'center',
         alignItems:'center',
         justifySelf: 'center',
@@ -95,11 +93,11 @@ export default StyleSheet.create({
         height:'100%',
     },
     buttonContainer:{
-        height:50,
+        height:60,
         marginLeft:30,
         marginRight:30,
-        marginBottom:130,
-        marginTop: 10,
+        marginBottom:116,
+        marginTop: 5,
         padding:0,
         justifyContent: 'center',
         backgroundColor:'#DD6135',
