@@ -51,7 +51,7 @@ export default StyleSheet.create({
       shadowRadius: 5,
   },
       buttonContainer:{
-        height:60,
+        height:55,
         marginLeft:30,
         marginRight:30,
         marginBottom:130,

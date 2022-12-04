@@ -27,7 +27,7 @@ const ScanIntroScreen = ({ navigation }) => {
             </View>
             
             <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Screen")}>
-            <Text style={styles.ButtonTextStyle}> BEGIN SCAN </Text>
+            <Text style={styles.ButtonTextStyle}> Begin Scan </Text>
             </TouchableOpacity>
         </View>
     )
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
           width: 0,
           height: 0,
         },
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.05,
         shadowRadius: 5,
       },
       image:{
@@ -80,15 +80,16 @@ const styles = StyleSheet.create({
           width: 0,
           height: 0,
         },
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.05,
         shadowRadius: 5,
     },
       buttonContainer:{
-        height:80,
+        height:55,
         marginLeft:30,
         marginRight:30,
-        marginBottom:130,
-        padding:30,
+        marginBottom:140,
+        padding:0,
+        justifyContent:'center',
         backgroundColor:'#DD6135',
         borderRadius:20,
         flexDirection:'column'

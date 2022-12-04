@@ -93,11 +93,11 @@ export default StyleSheet.create({
         height:'100%',
     },
     buttonContainer:{
-        height:60,
+        height:55,
         marginLeft:30,
         marginRight:30,
         marginBottom:116,
-        marginTop: 5,
+        marginTop: 7,
         padding:0,
         justifyContent: 'center',
         backgroundColor:'#DD6135',
