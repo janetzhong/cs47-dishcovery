@@ -2,27 +2,189 @@ import React from 'react';
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 import ingredientContext from '../assets/ingredientContext';
+import {ExpandableListView} from 'react-native-expandable-listview';
+import styles from '../assets/styles/ContextFlow.style';
+import bittermelon from '../assets/images/bittermelon.jpg';
+import cardamom from '../assets/images/cardamom.png';
+import lemongrass from '../assets/images/lemongrass.png';
+
 const ingredientContexttest = ingredientContext
 
-const AdditionalContextScreen = ({ route, navigation }) => {
-  const { itemKey } = route.params;
-  const itemKeySplit = itemKey.split(" Accuracy");     // ['bitter melon, ' Accuracy 0.99...'] This is not a good way to do it because it requires Accuracy be in that string but i was confused how to send filteredPredictions to params and so i sent item.key instead
-  const itemName = itemKeySplit.shift(); 
-  //console.log(itemName)
-  //console.log(ingredientContexttest[itemName]["Flavor Profile/Texture"])
+export default class App extends React.Component {
   
-  return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>Details!</Text>
-          <Text>item: {JSON.stringify(itemName)}</Text>
-          <Text>Flavor Profile/Texture: {JSON.stringify(ingredientContexttest[itemName]["Flavor Profile/Texture"])}</Text>
-          <Text>health benefits: {JSON.stringify(ingredientContexttest[itemName]["health benefits"])}</Text>
-          <Text>cultural context: {JSON.stringify(ingredientContexttest[itemName]["cultural context"])}</Text>
-        </View>
-      );
-}
+  
+  handleItemClick({index}) {
+    console.log(index);
+  };
 
-export default AdditionalContextScreen;
+  handleInnerItemClick({innerIndex, item, itemIndex}) {
+    console.log(innerIndex);
+  };
+  
+  capitalizeFirstLetters(str){
+    return str.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
+        return letter.toUpperCase();
+    })
+  }
+
+  useEffect(capItemName) {
+    this.props.navigation.setOptions({title: capItemName})
+    this.props.navigation.setOptions({headerBackTitle: 'Back'})
+  }
+
+  render() {
+    const { itemKey } = this.props.route.params;
+    const itemKeySplit = itemKey.split(" Accuracy");     // ['bitter melon, ' Accuracy 0.99...'] This is not a good way to do it because it requires Accuracy be in that string but i was confused how to send filteredPredictions to params and so i sent item.key instead
+    const itemName = itemKeySplit.shift(); 
+    const capItemName = this.capitalizeFirstLetters(itemName);
+    this.useEffect(capItemName)
+    switch(ingredientContexttest[itemName]["image"]) {
+      case 'bittermelon':
+        var imageName = bittermelon
+        break;
+      case 'cardamom':
+        var imageName = cardamom
+        break;
+      case 'lemongrass':
+        var imageName = lemongrass
+    }
+    const CONTENT = [
+      {
+        id: '97',
+        categoryName: 'Flavor/Texture Profile',
+        subCategory: [
+          {
+            id: '1',
+            name: '',
+            customInnerItem: (
+              <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
+                <View style={styles.textContainerStyle}>
+                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["flavor profile/texture"]}</Text>
+                </View>
+              </View> 
+            ),
+          },
+        ],
+      },
+      {
+        id: '96',
+        categoryName: 'Alternate Names',
+        subCategory: [
+          {
+            id: '1',
+            name: '',
+            customInnerItem: (
+              <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
+                <View style={styles.textContainerStyle}>
+                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["alternate names"]}</Text>
+                </View>
+              </View> 
+            ),
+          },
+        ],
+      },
+      {
+        id: '95',
+        categoryName: 'Cultural Context',
+        subCategory: [
+          {
+            id: '1',
+            name: '',
+            customInnerItem: (
+              <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
+                <View style={styles.textContainerStyle}>
+                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["cultural context"]}</Text>
+                </View>
+              </View> 
+            ),
+          },
+        ],
+      },
+      {
+        id: '94',
+        categoryName: 'Origins and Geography',
+        subCategory: [
+          {
+            id: '1',
+            name: '',
+            customInnerItem: (
+              <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
+                <View style={styles.textContainerStyle}>
+                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["origins and geography"]}</Text>
+                </View>
+              </View> 
+            ),
+          },
+        ],
+      },
+      {
+        id: '93',
+        categoryName: 'Health Benefits',
+        subCategory: [
+          {
+            id: '1',
+            name: '',
+            customInnerItem: (
+              <View style={styles.innerExpandBox}>
+                <View style={styles.expandImageBox}>
+                  <Image source={imageName} style={styles.expandImage}></Image>
+                </View>
+                <View style={styles.textContainerStyle}>
+                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["health benefits"]}</Text>
+                </View>
+              </View> 
+            ),
+          },
+        ],
+      }
+    ];
+    
+    function handleItemClick({index}) {
+      console.log(index);
+    };
+  
+    function handleInnerItemClick({innerIndex, item, itemIndex}) {
+      console.log(innerIndex);
+    };
+    
+    return (
+
+      <View style={styles.container}>
+        <View style={styles.imageBox}>
+          <Image source={imageName} style={styles.image}></Image>
+        </View>
+        <ExpandableListView
+          data={CONTENT}
+          ExpandableListViewStyles={styles.container}
+          itemContainerStyle={styles.outerExpandBox}
+          innerItemContainerStyle={styles.innerExpandBox}
+          customChevron={require('../assets/icons/chevron.jpeg')}
+        />
+        
+        <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Explore")}>
+          <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
+        </TouchableOpacity>
+      </View>
+
+      
+
+
+    );
+  }
+}

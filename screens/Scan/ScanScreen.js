@@ -26,6 +26,12 @@ export default class App extends React.Component {
     filteredPredictions: [],
     ingredientName: ''
   };
+
+  capitalizeFirstLetters(str){
+    return str.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
+        return letter.toUpperCase();
+    })
+  }
   
   async componentDidMount() {
     const { status } = await Camera.requestCameraPermissionsAsync();
@@ -134,7 +140,7 @@ export default class App extends React.Component {
                   style={styles.buttonContainer} activeOpacity = { .5 }
                   onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
                 >
-                  <Text style={styles.ButtonTextStyle}>Scan</Text>
+                  <Text style={styles.ButtonTextStyle}>Scan Ingredient</Text>
                 </TouchableOpacity> 
               }
               {this.state.ingredientRecognized ?
@@ -142,7 +148,7 @@ export default class App extends React.Component {
                 style={styles.buttonContainer} activeOpacity = { .5 }
                   onPress={() => {this.props.navigation.navigate("Additional Context", {itemKey: filteredPredictions[0].key})}}
                 >
-                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized: {this.state.ingredientName} → </Text>
+                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized: {this.capitalizeFirstLetters(this.state.ingredientName.toLowerCase())} → </Text>
                 </TouchableOpacity> : null
               }
               {this.state.ingredientNotRecognized ?
@@ -159,7 +165,7 @@ export default class App extends React.Component {
                     
                   }); this.objectDetection()}}//this.props.navigation.navigate("Scan Screen")}}
                 >
-                  <Text style={styles.ButtonTextStyle} activeOpacity = { .5 }>Rescan</Text>
+                  <Text style={styles.ButtonTextStyle} activeOpacity = { .5 }>Re-scan</Text>
                 </TouchableOpacity> : null
               }
             </View>

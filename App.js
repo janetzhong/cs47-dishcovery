@@ -8,6 +8,10 @@ import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 // import * as SplashScreen from 'expo-splash-screen';
 // SplashScreen.preventAutoHideAsync();
 
@@ -27,7 +31,17 @@ export function TabNavigator() {
 const Stack = createStackNavigator()
 const ScanStack = () => {
     return (
-      <Stack.Navigator initialRoutName="Scan Intro Screen" screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
+      <Stack.Navigator 
+        screenOptions={{
+          headerTitleStyle: {
+            color: 'black'
+          },
+          headerBackTitleStyle: {
+            color: '#DD6135'
+          },
+          headerTintColor: '#DD6135'
+        }}
+        initialRoutName="ScanIntroScreen">
          <Stack.Screen name="Scan Intro Screen" component={ScanIntroScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Scan Screen" component={ScanScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Additional Context" component={AdditionalContextScreen}  />
