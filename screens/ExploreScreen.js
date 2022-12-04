@@ -79,8 +79,7 @@ const ExploreScreen = ({ navigation }) => {
                                     marginLeft: index == 0 ? SIZES.padding : 0
                                 }}
                                 recipeItem={item}
-                                onPress={() => navigation.navigate
-                                ("Recipe", { recipe: item})}
+                                onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}
                                 />
                             )
                         }}
@@ -117,7 +116,7 @@ const ExploreScreen = ({ navigation }) => {
                                     marginLeft: index == 0 ? SIZES.padding : 0
                                 }}
                                 recipeItem={item}
-                                onPress={() => navigation.navigate("Recipe", { recipe: item })}
+                                onPress={() => navigation.navigate("Recipe Screen", { recipe: item })}
                             />
                         )
                     }}

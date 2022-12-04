@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get("window");
 export const COLORS = {
     // Dishcovery
     dishcoveryOrange : '#DD6135',
-
+    dishcoveryLightGrey :'#E3E8EB',
     // old file
     darkGreen: "#229879",
     darkLime: "#1A8871",

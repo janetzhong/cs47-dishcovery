@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, ScanCompleteScreen, SavedScreen , AdditionalContextScreen,ProfileScreen} from "./screens";
+import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, SavedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
@@ -16,11 +16,10 @@ const Tab = createBottomTabNavigator()
 export function TabNavigator() {
   return (
         <Tab.Navigator>
-           <Tab.Screen name='Home' component={HomeScreen}/>
-           <Tab.Screen name='Explore' component={ExploreScreen}/>
+           <Tab.Screen name='Explore' component={ExploreStack}/>
            <Tab.Screen name='Scan' component={ScanStack}/>
            <Tab.Screen name='Saved' component={SavedScreen}/>
-           <Tab.Screen name='Profile' component={ProfileScreen}/>
+           {/* <Tab.Screen name='Profile' component={ProfileScreen}/> */}
         </Tab.Navigator>
    )
 }
@@ -28,10 +27,20 @@ export function TabNavigator() {
 const Stack = createStackNavigator()
 const ScanStack = () => {
     return (
-      <Stack.Navigator initialRoutName="ScanIntroScreen">
+      <Stack.Navigator initialRoutName="Scan Intro Screen" screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
          <Stack.Screen name="Scan Intro Screen" component={ScanIntroScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Scan Screen" component={ScanScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Additional Context" component={AdditionalContextScreen}  />
+      </Stack.Navigator>
+    )
+}
+
+const ExploreStack = () => {
+    return (
+      <Stack.Navigator initialRoutName="Explore" screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
+      {/* <Stack.Navigator initialRoutName="Explore"> */}
+         <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     )
 }
@@ -75,7 +84,7 @@ export default function App() {
               width: 0,
               height: 0,
             },
-            shadowOpacity: 0.1,
+            shadowOpacity: 0.2,
             shadowRadius: 5,
           },
           headerTitleStyle: {
@@ -99,7 +108,7 @@ export default function App() {
           } 
         })}>
         {/* <Tab.Screen name="Home" component={HomeScreen} />           */}
-        <Tab.Screen name="Explore" component={ExploreScreen}  />
+        <Tab.Screen name="Explore" component={ExploreStack}  />
         <Tab.Screen name="Scan" component={ScanStack} />
         <Tab.Screen name="Liked" component={SavedScreen} />
         {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
