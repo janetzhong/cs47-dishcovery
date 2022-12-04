@@ -7,13 +7,12 @@ const trendingRecipes = [
         name: "Spaghetti With Shrimp Sauce",
         image: images.spagetti,
         duration: "30 mins",
+        difficulty: "Easy",
+        country: "Italy",
+        culturalContext: "This pasta shape seems to have first appeared in 1700s. Giulio Giacchero, author of a book on the economy of Genoa in the 1700’s, writes about trenette (another name for linguini) served with pesto, green beans and potatoes. \n\n He says it was the typical festive dish of Ligurian families of the time. In those days of course, the pasta would have been made mostly by hand and most probably with eggs. But it’s interesting that linguini with pesto, beans and potatoes is still a popular dish in Liguria today. This pasta shape seems to have first appeared in 1700s. Giulio Giacchero, author of a book on the economy of Genoa in the 1700’s, writes about trenette (another name for linguini) served with pesto, green beans and potatoes. \n\n He says it was the typical festive dish of Ligurian families of the time. In those days of course, the pasta would have been made mostly by hand and most probably with eggs. But it’s interesting that linguini with pesto, beans and potatoes is still a popular dish in Liguria today.",
         serving: 1,
         isBookmark: false,
         category: "Pasta",
-        author: {
-            profilePic: images.UserProfile5,
-            name: "Maria",
-        },
         ingredients: [
             {
                 id: 1,
@@ -77,13 +76,12 @@ const trendingRecipes = [
         name: "Malaysian Chicken Satay",
         image: images.satay,
         duration: "50 mins",
+        difficulty: "Medium",
+        country: "Malaysia",
+        culturalContext: "Chicken satay (middle), called satay ayam in Malaysia, comes from the northeast coast of that country and is marinated in a spice market's worth of seasonings, from ginger to fennel to coriander. Satay is the quintessence of fast food in southeast Asia. \n\nYou'll find it sizzling over hot coals practically 24 hours a day—at night markets, in busy hawker stalls, or offered by mobile vendors who prepare it to order. These cooks carry bamboo rods across their shoulders, balancing a basketful of the marinated meat and condiments on one side and a small grill filled with hot coals on the other.",
         serving: 10,
         isBookmark: true,
         category: "Local",
-        author: {
-            profilePic: images.UserProfile8,
-            name: "Mandy",
-        },
         ingredients: [
             {
                 id: 1,
@@ -145,13 +143,12 @@ const trendingRecipes = [
         name: "Sarawak Laksa",
         image: images.laksa,
         duration: "30 mins",
+        difficulty: "Hard",
+        country: "Malaysia",
+        culturalContext: "There are many styles of laksa; it is most commonly differentiated into 3 categories: Curry, Asam, and Sarawak. Sarawak Laksa is a comforting Malaysian noodle soup that is spicy, bright, warming, and full of flavour.\n\nIts origins began as Chinese men would set out onto the spice trade route and settle in their new villages, marrying the local Malay women. The result was a blending together of Chinese and Malay heritage. It is common to find traditional Chinese dishes that have been reformed using local spices and ingredients, thus creating a hybrid cuisine.",
         serving: 1,
         isBookmark: true,
         category: "Local",
-        author: {
-            profilePic: images.UserProfile9,
-            name: "Jessie",
-        },
         ingredients: [
             {
                 id: 1,
@@ -215,13 +212,12 @@ const trendingRecipes = [
         name: "Nasi Lemak",
         image: images.nasiLemak,
         duration: "1 hour",
+        difficulty: "Easy",
+        country: "Malaysia",
+        culturalContext: "Nasi Lemak's historical origins are humble—a cheap and easy meal for farmers to fill up on for a long day on the soil. It involves rice cooked in coconut milk (santan), served on a banana leaf and flavoured with local galangal roots and pandan leaves.\n\nWhat’s made it such an iconic and popular dish today, however, is its sheer diversity. Nasi Lemak can be typically served with boiled eggs, cucumber, onions and anchovies, but also with an array of delicious side-dishes to bring it to life.",
         serving: 10,
         isBookmark: true,
         category: "Local",
-        author: {
-            profilePic: images.UserProfile7,
-            name: "Ali Baba",
-        },
         ingredients: [
             {
                 id: 1,
