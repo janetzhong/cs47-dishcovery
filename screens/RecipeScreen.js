@@ -6,11 +6,11 @@ import {
     StyleSheet,
     ImageBackground,
     Button,
+    ScrollView,
     Text
 } from "react-native"
 
-import {icons, COLORS } from "../constants"
-
+import {icons, COLORS, SIZES } from "../constants"
 
 
 const RecipeScreen = ({ navigation, route }) => {
@@ -27,7 +27,7 @@ const RecipeScreen = ({ navigation, route }) => {
     }, [])
 
     return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
         {/* Recipe Image Background */}
         <ImageBackground style={styles.recipeImage} resizeMode={'cover'} source={selectedRecipe?.image}>
             {/* Back button */}
@@ -62,14 +62,14 @@ const RecipeScreen = ({ navigation, route }) => {
         </View>
 
         <View style={{margin:5}}>
-            <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Regular'}}> todo {selectedRecipe?.duration}  todo </Text>
+            <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Regular'}}> {selectedRecipe?.difficulty} {selectedRecipe?.duration}  {selectedRecipe?.country} </Text>
         </View>
 
         {showIngredients ? (<Text>yes to ingredient</Text>): null}
         {showRecipe ? (<Text>yes to recipe</Text>): null}
-        {showContext ? (<Text>yes to context</Text>): null}
+        {showContext ? (<Text style={{marginRight:33, marginTop: SIZES.padding, marginLeft:33}}>{selectedRecipe?.culturalContext}</Text>) : null}
 
-    </View>
+    </ScrollView>
     )
 }
 export default RecipeScreen

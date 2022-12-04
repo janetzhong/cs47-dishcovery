@@ -26,6 +26,7 @@ const ExploreScreen = ({ navigation }) => {
                     flexDirection: 'row',
                     height: 50,
                     alignItems: 'center',
+                    marginTop: SIZES.padding,
                     marginHorizontal: SIZES.padding,
                     paddingHorizontal: SIZES.radius,
                     borderRadius: 10,
