@@ -53,7 +53,7 @@ const ExploreStack = ({route}) => {
     return (
       // have to change initialRoutname so back button on Recipe works from liked and scan screen
       <Stack.Navigator initialRouteName={route.name === 'Liked' ? 'Liked' : 'Liked'} screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
-      {/* <Stack.Navigator initialRoutName="Explore">  */}
+      {/* <Stack.Navigator initialRoutName="Explore">   */}
          <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
@@ -74,6 +74,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
+          backgroundColor: '#fff' ,
           tabBarActiveTintColor: COLORS.dishcoveryOrange,
           tabBarInactiveTintColor: "grey",
           tabBarLabelStyle: { 
@@ -87,8 +88,8 @@ export default function App() {
           tabBarStyle : {
             position: 'absolute',
             bottom:25,
-            left:20,
-            right:20,
+            left:16,
+            right:16,
             elevation:0,
             backgroundColor: 'white',
             borderRadius:15,

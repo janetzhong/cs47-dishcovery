@@ -56,8 +56,8 @@ const RecipeScreen = ({ navigation, route }) => {
             </TouchableOpacity>
         </View>
 
-        <View style={{margin:5}}>
-            <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Bold',textTransform: 'uppercase'}}> {selectedRecipe?.name} </Text>
+        <View style={{marginVertical:5,marginHorizontal:20}}>
+            <Text style={styles.title}> {selectedRecipe?.name} </Text>
         </View>
 
         <View style={{margin:5,flexDirection:'row', justifyContent:'center'}}>
@@ -83,6 +83,17 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'column'
     },
+    title: {
+        fontSize: 15,
+        letterSpacing: 1,
+        textTransform:'uppercase',
+        fontFamily: 'Inter-Bold',
+        textAlign: 'center',
+        color:COLORS.dishcoveryNearBlack,
+        marginRight: 5,
+        marginLeft: 5,
+        marginVertical:13,
+      },
     backbuttoncircle :{
         position: 'absolute',
         alignItems: 'center',

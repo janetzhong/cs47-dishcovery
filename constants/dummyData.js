@@ -207,6 +207,7 @@ const bitterMelonRecipes = [
     {
         id: 1,
         name: "Ginisang Ampalaya (Sauteed Bitter Melon)",
+        // name: "Carrot Tarrator",
         image: images.ampalaya,
         duration: "30 mins",
         difficulty: "Med",

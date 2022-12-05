@@ -6,13 +6,15 @@ import {
     SafeAreaView,
     TouchableOpacity,
     TextInput,
-    FlatList
+    FlatList,
+    StyleSheet
 } from "react-native"
 
 
 import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants"
 import DishCard from '../components/DishCard.js';
 import { TrendingCard } from "../components"
+import { styles } from "react-native-expandable-listview/src/styles";
 
 
 console.log(dummyData.trendingRecipes)
@@ -24,30 +26,30 @@ const ExploreScreen = ({ navigation }) => {
             <View
                 style={{
                     flexDirection: 'row',
-                    height: 50,
+                    height: 45,
                     alignItems: 'center',
-                    marginTop: SIZES.paddingsmall,
+                    marginTop:15,
                     marginHorizontal: SIZES.paddingsmall,
                     paddingHorizontal: SIZES.paddingsmall,
                     borderRadius: 10,
-                    backgroundColor: COLORS.lightGray
-                }}
-            >
+                    backgroundColor: COLORS.lightGray,
+                }}>
                 <Image
                     style={{
-                        width: 20,
-                        height: 20,
+                        width: 15,
+                        height: 15,
                         tintColor: COLORS.gray,
+                        marginRight:15
                     }}
                     source={icons.search}
                 />
                 <TextInput
                     style={{
-                        marginLeft: SIZES.paddingsmall,
-                        ...FONTS.body3
+                        fontFamily:'Inter-Regular',
+                        fontSize:14,paddingVertical:10
                     }}
                     placeholderTextColor={COLORS.gray}
-                    placeholder="Search Recipes"
+                    placeholder="Search for an ingredient, dish or cuisine"
                 />
                 
             </View>
@@ -60,13 +62,7 @@ const ExploreScreen = ({ navigation }) => {
                         marginTop : SIZES.paddingsmall
                     }}
                     >
-                        <Text
-                            style={{
-                                fontFamily: 'Inter-Bold',
-                                marginHorizontal: SIZES.padding,
-                                ...FONTS.h2,
-                                color:COLORS.dishcoveryNearBlack
-                            }}>
+                    <Text style={styles2.subheading}>
                             Based On Your Scans
                         </Text>
                         <FlatList 
@@ -93,18 +89,8 @@ const ExploreScreen = ({ navigation }) => {
 
    function renderTrendingSection() {
         return (
-            <View
-            style={{
-                marginTop : 0
-            }}
-            >
-                <Text
-                    style={{
-                        fontFamily: 'Inter-Bold',
-                        marginHorizontal: SIZES.padding,
-                        ...FONTS.h2,
-                        color:COLORS.dishcoveryNearBlack
-                    }}>
+            <View style={{marginTop : 0}}>
+                <Text style={styles2.subheading}>
                     Traditional Christmas food from around the world
                 </Text>
                 <FlatList 
@@ -116,7 +102,6 @@ const ExploreScreen = ({ navigation }) => {
                     return (
                         <DishCard
                         containerStyle = {{
-                            //marginLeft: 0 // line dif than code, 54:20 
                             marginLeft: index == 0 ? SIZES.padding : 0
                         }}
                         recipeItem={item}
@@ -156,3 +141,11 @@ const ExploreScreen = ({ navigation }) => {
 }
 
 export default ExploreScreen;
+
+const styles2 = StyleSheet.create({
+    subheading:{
+        fontFamily: 'Inter-Medium',
+        marginHorizontal: SIZES.paddingsmall,
+        fontSize:20,
+        color:COLORS.dishcoveryNearBlack
+}})
