@@ -76,7 +76,7 @@ const trendingRecipes = [
         name: "Malaysian Chicken Satay",
         image: images.satay,
         duration: "50 mins",
-        difficulty: "Medium",
+        difficulty: "Med",
         country: "Malaysia",
         culturalContext: "Chicken satay (middle), called satay ayam in Malaysia, comes from the northeast coast of that country and is marinated in a spice market's worth of seasonings, from ginger to fennel to coriander. Satay is the quintessence of fast food in southeast Asia. \n\nYou'll find it sizzling over hot coals practically 24 hours a day—at night markets, in busy hawker stalls, or offered by mobile vendors who prepare it to order. These cooks carry bamboo rods across their shoulders, balancing a basketful of the marinated meat and condiments on one side and a small grill filled with hot coals on the other.",
         serving: 10,

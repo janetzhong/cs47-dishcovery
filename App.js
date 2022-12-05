@@ -49,10 +49,11 @@ const ScanStack = () => {
     )
 }
 
-const ExploreStack = () => {
+const ExploreStack = ({route}) => {
     return (
-      <Stack.Navigator initialRoutName="Explore" screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
-      {/* <Stack.Navigator initialRoutName="Explore"> */}
+      // have to change initialRoutname so back button on Recipe works from liked and scan screen
+      <Stack.Navigator initialRouteName={route.name === 'Liked' ? 'Liked' : 'Liked'} screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
+      {/* <Stack.Navigator initialRoutName="Explore">  */}
          <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>

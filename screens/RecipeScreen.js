@@ -30,7 +30,7 @@ const RecipeScreen = ({ navigation, route }) => {
     <ScrollView style={styles.container}>
         {/* Recipe Image Background */}
         <ImageBackground style={styles.recipeImage} resizeMode={'cover'} source={selectedRecipe?.image}>
-            {/* Back button */}
+            {/* Back button TODO - doesn't go to right page if from Liked or Scan screen*/}
             <TouchableOpacity style={styles.backbuttoncircle} onPress={() => navigation.goBack()}>
             <Image source={icons.back} style={styles.backbuttonarrow}/>
             </TouchableOpacity>
