@@ -26,9 +26,9 @@ const ExploreScreen = ({ navigation }) => {
                     flexDirection: 'row',
                     height: 50,
                     alignItems: 'center',
-                    marginTop: SIZES.padding,
-                    marginHorizontal: SIZES.padding,
-                    paddingHorizontal: SIZES.radius,
+                    marginTop: SIZES.paddingsmall,
+                    marginHorizontal: SIZES.paddingsmall,
+                    paddingHorizontal: SIZES.paddingsmall,
                     borderRadius: 10,
                     backgroundColor: COLORS.lightGray
                 }}
@@ -43,12 +43,13 @@ const ExploreScreen = ({ navigation }) => {
                 />
                 <TextInput
                     style={{
-                        marginLeft: SIZES.radius,
+                        marginLeft: SIZES.paddingsmall,
                         ...FONTS.body3
                     }}
                     placeholderTextColor={COLORS.gray}
                     placeholder="Search Recipes"
                 />
+                
             </View>
         )
     }
@@ -56,19 +57,20 @@ const ExploreScreen = ({ navigation }) => {
                 return (
                     <View
                     style={{
-                        marginTop : SIZES.padding
+                        marginTop : SIZES.paddingsmall
                     }}
                     >
                         <Text
                             style={{
                                 fontFamily: 'Inter-Bold',
                                 marginHorizontal: SIZES.padding,
-                                ...FONTS.h2
+                                ...FONTS.h2,
+                                color:COLORS.dishcoveryNearBlack
                             }}>
                             Based On Your Scans
                         </Text>
                         <FlatList 
-                        data={dummyData.trendingRecipes}
+                        data={dummyData.bitterMelonRecipes}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={item => `${item.id}`}
@@ -89,43 +91,43 @@ const ExploreScreen = ({ navigation }) => {
                 )
             }
 
-    function renderTrendingSection() {
+   function renderTrendingSection() {
         return (
             <View
-                style={{
-                    marginTop: SIZES.padding
-                }}
+            style={{
+                marginTop : 0
+            }}
             >
                 <Text
                     style={{
+                        fontFamily: 'Inter-Bold',
                         marginHorizontal: SIZES.padding,
-                        ...FONTS.h2
-                    }}
-                >
-                    For Chinese New Year
+                        ...FONTS.h2,
+                        color:COLORS.dishcoveryNearBlack
+                    }}>
+                    Traditional Christmas food from around the world
                 </Text>
-
-                <FlatList
-                    data={dummyData.trendingRecipes}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    keyExtractor={item => `${item.id}`}
-                    renderItem={({ item, index }) => {
-                        return (
-                            <TrendingCard
-                                containerStyle={{
-                                    marginLeft: index == 0 ? SIZES.padding : 0
-                                }}
-                                recipeItem={item}
-                                onPress={() => navigation.navigate("Recipe Screen", { recipe: item })}
-                            />
-                        )
-                    }}
+                <FlatList 
+                data={dummyData.christmasRecipes}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={item => `${item.id}`}
+                renderItem={({item, index}) => {
+                    return (
+                        <DishCard
+                        containerStyle = {{
+                            //marginLeft: 0 // line dif than code, 54:20 
+                            marginLeft: index == 0 ? SIZES.padding : 0
+                        }}
+                        recipeItem={item}
+                        onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}
+                        />
+                    )
+                }}
                 />
             </View>
         )
     }
-    
     return (
         <SafeAreaView
             style={{

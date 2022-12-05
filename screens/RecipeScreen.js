@@ -11,14 +11,16 @@ import {
 } from "react-native"
 
 import {icons, COLORS, SIZES } from "../constants"
+import { Ionicons } from '@expo/vector-icons';
 
 
 const RecipeScreen = ({ navigation, route }) => {
 
     const [selectedRecipe, setSelectedRecipe] = React.useState(null)
+    const [showContext, setShowContext] = useState(true);
+    const [showRecipe, setShowRecipe] = useState(false);
     const [showIngredients, setShowIngredients] = useState(false);
-    const [showRecipe, setShowRecipe] = useState(true);
-    const [showContext, setShowContext] = useState(false);
+
 
     React.useEffect(() => {
         let { recipe } = route.params
@@ -38,35 +40,37 @@ const RecipeScreen = ({ navigation, route }) => {
 
         {/* Toggle Recipe Info - 3 buttons :-) */}
         <View style={styles.buttonContainer}>
+            {/* CONTEXT BUTTON */}
+            <TouchableOpacity style={showContext? styles.recipeInfoButtonOn : styles.recipeInfoButtonOff} onPress={() => {setShowIngredients(false) & setShowRecipe(false) & setShowContext(true)}} >
+            <Text style={styles.recipeInfoButtonText}>Context</Text>
+            </TouchableOpacity>
+
             {/* INGREDIENT BUTTON */}
             <TouchableOpacity style={showIngredients? styles.recipeInfoButtonOn : styles.recipeInfoButtonOff} onPress={() => {setShowIngredients(true) & setShowRecipe(false) & setShowContext(false)}} >
             <Text style={styles.recipeInfoButtonText}>Ingredients</Text>
             </TouchableOpacity>
-            {/*Here we will return the view when state is true and will return false if state is false*/}
 
             {/* RECIPE BUTTON */}
             <TouchableOpacity style={showRecipe? styles.recipeInfoButtonOn : styles.recipeInfoButtonOff} onPress={() => {setShowIngredients(false) & setShowRecipe(true) & setShowContext(false)}} >
             <Text style={styles.recipeInfoButtonText}>Cook!</Text>
             </TouchableOpacity>
-            {/*Here we will return the view when state is true and will return false if state is false*/}
-
-            {/* CONTEXT BUTTON */}
-            <TouchableOpacity style={showContext? styles.recipeInfoButtonOn : styles.recipeInfoButtonOff} onPress={() => {setShowIngredients(false) & setShowRecipe(false) & setShowContext(true)}} >
-            <Text style={styles.recipeInfoButtonText}>Context</Text>
-            </TouchableOpacity>
-            {/*Here we will return the view when state is true and will return false if state is false*/}
         </View>
 
         <View style={{margin:5}}>
             <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Bold',textTransform: 'uppercase'}}> {selectedRecipe?.name} </Text>
         </View>
 
-        <View style={{margin:5}}>
-            <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Regular'}}> {selectedRecipe?.difficulty} {selectedRecipe?.duration}  {selectedRecipe?.country} </Text>
+        <View style={{margin:5,flexDirection:'row', justifyContent:'center'}}>
+            <Ionicons name="cellular" size={15} color= {COLORS.dishcoveryOrange} />
+            <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Regular'}}> {selectedRecipe?.difficulty} </Text>
+            <Ionicons name="time" size={15} color= {COLORS.dishcoveryOrange} />
+            <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Regular'}}> {selectedRecipe?.duration} </Text>
+            <Ionicons name="location" size={15} color= {COLORS.dishcoveryOrange} />
+            <Text style={{fontSize:15, textAlign:'center', fontFamily:'Inter-Regular'}}> {selectedRecipe?.country} </Text>
         </View>
 
-        {showIngredients ? (<Text>yes to ingredient</Text>): null}
-        {showRecipe ? (<Text>yes to recipe</Text>): null}
+        {showIngredients ? (<Text style={{marginRight:33, marginTop: SIZES.padding, marginLeft:33}}>yes to ingredient</Text>): null}
+        {showRecipe ? (<Text style={{marginRight:33, marginTop: SIZES.padding, marginLeft:33}}>yes to recipe</Text>): null}
         {showContext ? (<Text style={{marginRight:33, marginTop: SIZES.padding, marginLeft:33}}>{selectedRecipe?.culturalContext}</Text>) : null}
 
     </ScrollView>

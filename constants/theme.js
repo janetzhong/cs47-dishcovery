@@ -6,6 +6,7 @@ export const COLORS = {
     // Dishcovery
     dishcoveryOrange : '#DD6135',
     dishcoveryLightGrey :'#E3E8EB',
+    dishcoveryNearBlack: '#444444',
     // old file
     darkGreen: "#229879",
     darkLime: "#1A8871",
@@ -38,8 +39,10 @@ export const SIZES = {
     // global sizes
     base: 8,
     font: 14,
-    radius: 12,
+    radius: 32,
+    radiussmall:12,
     padding: 24,
+    paddingsmall:12,
 
     // font sizes
     largeTitle: 40,

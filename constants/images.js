@@ -6,6 +6,20 @@ const satay = require("../assets/images/recipes/satay.png")
 const laksa = require("../assets/images/recipes/laksa.png")
 const nasiLemak = require("../assets/images/recipes/nasi-lemak.webp")
 
+const pavakkai = require("../assets/images/recipes/pavakkai.png")
+const sambol = require("../assets/images/recipes/sambol.jpg")
+const sauteedkaraila = require("../assets/images/recipes/sauteedkaraila.jpg")
+const stuffedkarela = require("../assets/images/recipes/stuffedkarela.jpg")
+const ampalaya = require("../assets/images/recipes/ampalaya.jpg")
+const canhkho = require("../assets/images/recipes/canhkho.webp")
+
+const melomakarona = require("../assets/images/recipes/melomakarona.jpg")
+const bacalao = require("../assets/images/recipes/bacalao.jpg")
+const kaarage = require("../assets/images/recipes/kaarage.jpg")
+const kolivo = require("../assets/images/recipes/kolivo.jpg")
+const tamales = require("../assets/images/recipes/tamales.jpg")
+
+
 const profile = require("../assets/images/dummy_profiles/profile.png")
 const UserProfile1 = require("../assets/images/dummy_profiles/profile-pic-1.png")
 const UserProfile2 = require("../assets/images/dummy_profiles/profile-pic-2.png")
@@ -26,6 +40,18 @@ export default {
     satay,
     laksa,
     nasiLemak,
+    pavakkai,
+    sambol,
+    sauteedkaraila,
+    stuffedkarela,
+    ampalaya,
+    canhkho,
+
+    melomakarona,
+    bacalao,
+    kaarage,
+    kolivo,
+    tamales,
 
     UserProfile1,
     UserProfile2,

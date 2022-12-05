@@ -128,7 +128,7 @@ const TrendingCard = ({ containerStyle, recipeItem, onPress }) => {
                     borderRadius: SIZES.radius
                 }}
             >
-                <Text style={{ color: COLORS.white, ...FONTS.h4 }}>{recipeItem.category}</Text>
+                <Text style={{ color: COLORS.white, ...FONTS.h4 }}>{recipeItem.country}</Text>
             </View>
 
             {/* Card Info */}
