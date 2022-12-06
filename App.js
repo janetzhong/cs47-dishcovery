@@ -9,6 +9,7 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
 import { LogBox } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
@@ -73,7 +74,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={({ route }) => ({
+        screenOptions={({ route, navigation }) => ({
           backgroundColor: '#fff' ,
           tabBarActiveTintColor: COLORS.dishcoveryOrange,
           tabBarInactiveTintColor: "grey",
@@ -109,6 +110,23 @@ export default function App() {
             color: COLORS.dishcoveryOrange
           },
 
+          headerRight: () => (
+            <TouchableOpacity
+              style={
+              {backgroundColor: COLORS.dishcoveryOrange, 
+                width:32,
+                height:32, 
+                borderRadius: 16, 
+                marginBottom: 5, 
+                marginRight: 10,
+                alignItems: 'center',
+                justifyContent: 'center'}}
+                activeOpacity={0.5}
+                onPress={() => navigation.navigate('Profile')}>
+                  <Ionicons name={'person'} size={21} color= {'white'} />
+              </TouchableOpacity>
+          ),
+
           tabBarIcon: ({ focused, color }) => {
             let iconName;
             color = focused ? COLORS.dishcoveryOrange : "grey";
@@ -128,6 +146,12 @@ export default function App() {
         <Tab.Screen name="Scan" component={ScanStack} />
         <Tab.Screen name="Liked" component={LikedScreen} />
         {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
+        <Tab.Screen name="Profile" component={ProfileScreen} 
+        options={{
+        tabBarButton: () => null,
+        tabBarVisible:false //hide tab bar on this screen
+        }}
+/>
       </Tab.Navigator>
     </NavigationContainer>
   );
