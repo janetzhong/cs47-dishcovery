@@ -5,6 +5,9 @@ import * as ImageManipulator from 'expo-image-manipulator';
 import ProgressBar from 'react-native-animated-progress';
 import CloseButton from '../../assets/styles/CloseButton.style';
 import styles from '../../assets/styles/ScanFlow.style'
+import bittermelonSquare from '../../assets/images/scanpage/bittermelon-square.jpg';
+import cardamomSquare from '../../assets/images/scanpage/cardamom-square.png';
+import lemongrassSquare from '../../assets/images/scanpage/lemongrass-square.png';
 
 const Clarifai = require('clarifai');
 import ingredientContext from '../../assets/ingredientContext';
@@ -24,7 +27,8 @@ export default class App extends React.Component {
     ingredientNotRecognized: false,
     scanComplete: false,
     filteredPredictions: [],
-    ingredientName: ''
+    ingredientName: '',
+    imageName: bittermelonSquare,
   };
 
   capitalizeFirstLetters(str){
@@ -75,8 +79,20 @@ export default class App extends React.Component {
     this.setState({ ingredientNotRecognized: filteredPredictions.length <= 0});
     console.log(this.state.ingredientRecognized, this.state.ingredientNotRecognized)
     this.state.ingredientRecognized ? console.log(filteredPredictions[0]['key'].split(" Accuracy").shift()): null
-    this.setState({ingredientName: (this.state.ingredientRecognized ? filteredPredictions[0]['key'].split(" Accuracy").shift() : null)})
+    this.setState({ingredientName: (this.state.ingredientRecognized ? filteredPredictions[0]['key'].split(" Accuracy").shift() : '')})
     this.setState({ filteredPredictions: filteredPredictions });
+    if (this.state.ingredientRecognized) {
+      switch(this.state.ingredientName) {
+        case 'bittermelon':
+          this.setState({imageName: bittermelonSquare})
+          break;
+        case 'cardamom':
+          this.setState({imageName: cardamomSquare})
+          break;
+        case 'lemongrass':
+          this.setState({imageName: lemongrassSquare})
+      }
+    } 
   };
   renderProgress = async () => {
     return 
@@ -88,8 +104,10 @@ export default class App extends React.Component {
 
 
   render() {
+
     const { hasCameraPermission, predictions, filteredPredictions } = this.state;
     let wanttokeep = Object.keys(ingredientContexttest)
+    var imageName = this.state.imageName
     
     if (hasCameraPermission === null) {
       return <View />;
@@ -145,10 +163,11 @@ export default class App extends React.Component {
               }
               {this.state.ingredientRecognized ?
                 <TouchableOpacity
-                style={styles.buttonContainer} activeOpacity = { .5 }
+                style={styles.recognizedButtonContainer} activeOpacity = { .5 }
                   onPress={() => {this.props.navigation.navigate("Additional Context", {itemKey: filteredPredictions[0].key})}}
                 >
-                  <Text style={styles.ButtonTextStyle}>Ingredient Recognized: {this.capitalizeFirstLetters(this.state.ingredientName.toLowerCase())} → </Text>
+                  <View  style={styles.squareImageViewStyle}><Image source={imageName} style={styles.squareImageStyle}></Image></View>
+                  <Text style={styles.recognizedButtonTextStyle}>Ingredient Recognized: {this.capitalizeFirstLetters(this.state.ingredientName.toLowerCase())} ›</Text>
                 </TouchableOpacity> : null
               }
               {this.state.ingredientNotRecognized ?
@@ -165,7 +184,7 @@ export default class App extends React.Component {
                     
                   }); this.objectDetection()}}//this.props.navigation.navigate("Scan Screen")}}
                 >
-                  <Text style={styles.ButtonTextStyle} activeOpacity = { .5 }>Re-scan</Text>
+                  <Text style={styles.ButtonTextStyle} activeOpacity = { .5 }>Unrecognized Item: Please Re-scan ↺</Text>
                 </TouchableOpacity> : null
               }
             </View>

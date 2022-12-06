@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 export default StyleSheet.create({
   container: {
       flex:1,
-      flexDirection:'column'
+      //flexDirection:'column'
     },
     imageBox:{
       flex: 6,
@@ -57,6 +57,7 @@ export default StyleSheet.create({
         marginBottom:130,
         marginTop: 5,
         padding:0,
+        alignItems: 'center',
         justifyContent: 'center',
         backgroundColor:'#DD6135',
         borderRadius:20,
@@ -145,6 +146,47 @@ export default StyleSheet.create({
         shadowOpacity: 0.05,
         shadowRadius: 5,
       
-    }
+    },
+    recognizedButtonContainer:{
+      display: 'flex',
+      flexDirection: 'row',
+      height:55,
+      marginLeft:30,
+      marginRight:30,
+      marginBottom:130,
+      marginTop: 5,
+      padding:0,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor:'#DD6135',
+      borderRadius:20,
+      shadowOffset: {
+          width: 0,
+          height: 0,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 5,
+  },
+  recognizedButtonTextStyle: {
+    flex: 0.8,
+    fontSize: 15,
+    textAlign: 'center',
+    color: 'white',
+    fontFamily: 'Inter-Regular',
+    marginLeft: -32,
+  },
+  squareImageViewStyle: {
+    flex: 0.2,
+    borderRadius:10,
+    marginLeft: 10,
+  },
+  squareImageStyle: {
+    width: '60%',
+    height: '70%',
+    borderTopRightRadius:15,
+    borderTopLeftRadius:15,
+    borderBottomRightRadius:15,
+    borderBottomLeftRadius:15, 
+  }
     
 });
