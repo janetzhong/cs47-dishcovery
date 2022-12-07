@@ -21,5 +21,21 @@ export default StyleSheet.create({
         fontSize:15,
         color: COLORS.dishcoveryOrange,
         textDecorationLine: 'underline'
+    },
+    dishcoveryHeaderTitle: {
+        fontFamily: 'Inter-SemiBold',
+        textTransform: 'uppercase',
+        color: COLORS.dishcoveryOrange,
+        fontSize:14,
+        textAlign: 'center',
+        marginBottom:2,
+    },
+    pageHeaderTitle: {
+        fontFamily: 'Inter-SemiBold',
+        textTransform: 'uppercase',
+        color: COLORS.dishcoveryOrange,
+        textAlign: 'center',
+        fontSize:17,
+        marginBottom:6
     }
 });
