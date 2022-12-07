@@ -3,18 +3,20 @@ import {
     View,
     Text,
     TouchableOpacity,
-    SafeAreaView
+    SafeAreaView,
+    Image
 } from 'react-native';
 import styles from '../assets/styles/Profile.style';
 import textStyles from '../assets/styles/TextStyles.style';
 import commonStyles from '../assets/styles/CommonStyles.styles';
+import {icons, COLORS, SIZES } from "../constants"
+import { Ionicons } from '@expo/vector-icons';
 
 const ProfileScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={commonStyles.whiteBackground}>
             <View style={commonStyles.outerView}>
                 <View style={styles.mainView}>
-                    <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.goBack()}><Text>back</Text></TouchableOpacity>
                     <Text style={textStyles.subheading}>Allergies and Sensitivities</Text>
                     <Text style={textStyles.body}>Unless you remove these preferences, recipes using these ingredients will not be shown to you.</Text>
                     <View style={styles.filterGroupContainer}>
