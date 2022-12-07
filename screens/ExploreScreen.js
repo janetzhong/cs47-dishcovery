@@ -22,6 +22,7 @@ const ExploreScreen = ({ navigation }) => {
 
     function renderSearchBar() {
         const [text, setText] = useState('');
+
         return (
             <SafeAreaView style={{
                 flexDirection: 'row', height: 60,
@@ -80,7 +81,7 @@ const ExploreScreen = ({ navigation }) => {
                         marginTop : SIZES.paddingsmall
                     }}
                     >
-                    <Text style={styles2.subheading}>
+                    <Text style={[styles2.subheading, {marginLeft: '5%', paddingLeft: '1%'}]}>
                             Based On Your Scans
                         </Text>
                         <FlatList 
@@ -92,8 +93,8 @@ const ExploreScreen = ({ navigation }) => {
                             return (
                                 <DishCard
                                 containerStyle = {{
-                                    marginLeft: 6 // line dif than code, 54:20 
-                                    //marginLeft: index == 0 ? SIZES.padding : 0
+                                    //marginLeft: 6 // line dif than code, 54:20 
+                                    marginLeft: index == 0 ? 30 : 6
                                 }}
                                 recipeItem={item}
                                 onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}
@@ -108,7 +109,7 @@ const ExploreScreen = ({ navigation }) => {
    function renderTrendingSection() {
         return (
             <View style={{marginTop : 0}}>
-                <Text style={styles2.subheading}>
+                <Text style={[styles2.subheading, {marginLeft: '5%', paddingLeft: '1%'}]}>
                     Traditional Christmas food from around the world
                 </Text>
                 <FlatList 
@@ -120,7 +121,7 @@ const ExploreScreen = ({ navigation }) => {
                     return (
                         <DishCard
                         containerStyle = {{
-                            marginLeft: index == 0 ? 6 : 0
+                            marginLeft: index == 0 ? 30 : 6
                         }}
                         recipeItem={item}
                         onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}
@@ -135,7 +136,7 @@ const ExploreScreen = ({ navigation }) => {
         <SafeAreaView
             style={commonStyles.whiteBackground}
         >
-            <View style={commonStyles.outerView}>
+            <View>
                 <FlatList
                     data={dummyData.categories}
                     keyExtractor={item => `${item.id}`}
@@ -143,7 +144,9 @@ const ExploreScreen = ({ navigation }) => {
                     showsVerticalScrollIndicator={false}
                     ListHeaderComponent={
                         <View>
+                            <View style={[commonStyles.outerView, {marginTop: 0}]}>
                             {renderSearchBar()}
+                            </View>
                             {renderCardSection()}
                             {renderTrendingSection()}
                         </View>
