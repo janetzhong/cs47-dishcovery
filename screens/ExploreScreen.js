@@ -25,7 +25,7 @@ const ExploreScreen = ({ navigation }) => {
         return (
             <SafeAreaView style={{
                 flexDirection: 'row', height: 60,
-                width: 420}}>
+                width: '100%'}}>
 
                 <View style={{
                 flexDirection: 'row',
@@ -34,7 +34,6 @@ const ExploreScreen = ({ navigation }) => {
                 //width: 360,
                 alignItems: 'center',
                 marginTop:15,
-                marginLeft: SIZES.paddingsmall,
                 paddingLeft: SIZES.paddingsmall,
                 borderRadius: 10,
                 //justifyContent: 'space-between',
@@ -166,8 +165,8 @@ const styles2 = StyleSheet.create({
         height: 45,
         alignItems: 'center',
         marginTop:15,
-        marginHorizontal: SIZES.paddingsmall,
-        paddingHorizontal: SIZES.paddingsmall,
+        //marginHorizontal: SIZES.paddingsmall,
+        //paddingHorizontal: SIZES.paddingsmall,
         borderRadius: 10,
         backgroundColor: "white",
         borderColor: COLORS.dishcoveryMedGrey,
