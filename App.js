@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
+import { SearchScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
@@ -55,10 +55,26 @@ const ScanStack = () => {
 const ExploreStack = ({route}) => {
     return (
       // have to change initialRoutname so back button on Recipe works from liked and scan screen
-      <Stack.Navigator initialRouteName={route.name === 'Liked' ? 'Liked' : 'Liked'} screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
+      <Stack.Navigator initialRoutName="Explore Screen" screenOptions={{
+        cardStyle: { backgroundColor: '#fff' },
+        headerTitleStyle: {
+          color: COLORS.dishcoveryOrange,
+          fontFamily:'Inter-SemiBold',
+          textTransform:'uppercase',
+          fontSize:13
+        },
+        headerBackTitle: null,
+        headerBackTitleStyle: {
+          color: COLORS.dishcoveryOrange,
+          fontFamily:'Inter-Regular',
+          fontSize:15
+        },
+        headerTintColor:  COLORS.dishcoveryOrange,
+      }}>
       {/* <Stack.Navigator initialRoutName="Explore">   */}
          <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Search Results" component={SearchScreen} options={{}} />
       </Stack.Navigator>
     )
 }
@@ -145,7 +161,7 @@ export default function App() {
             return <Ionicons name={iconName} size={28} color= {color} />;
           } 
         })}>
-        {/* <Tab.Screen name="Home" component={HomeScreen} />           */}
+        {/* <Tab.Screen name="Search" component={SearchScreen} />           */}
         <Tab.Screen name="Explore" component={ExploreStack}  />
         <Tab.Screen name="Scan" component={ScanStack} />
         <Tab.Screen name="Liked" component={LikedScreen} />

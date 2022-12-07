@@ -1,4 +1,4 @@
-import React from "react"
+import React ,{useState} from "react"
 import {
     View,
     Text,
@@ -22,6 +22,7 @@ console.log(dummyData.trendingRecipes)
 const ExploreScreen = ({ navigation }) => {
 
     function renderSearchBar() {
+        const [text, setText] = useState('');
         return (
             <View
                 style={{
@@ -45,11 +46,16 @@ const ExploreScreen = ({ navigation }) => {
                 />
                 <TextInput
                     style={{
+                        flex:1,
                         fontFamily:'Inter-Regular',
                         fontSize:14,paddingVertical:10
                     }}
                     placeholderTextColor={COLORS.gray}
                     placeholder="Search for an ingredient, dish or cuisine"
+                    clearButtonMode='while-editing'
+                    onChangeText={newText => setText(newText)}
+                    defaultValue={text}
+                    onSubmitEditing= {() => {setText('') ; navigation.navigate("Search Results")}}
                 />
                 
             </View>
@@ -142,6 +148,24 @@ const ExploreScreen = ({ navigation }) => {
 export default ExploreScreen;
 
 const styles2 = StyleSheet.create({
+    searchbar:{
+        flexDirection: 'row',
+        height: 45,
+        alignItems: 'center',
+        marginTop:15,
+        marginHorizontal: SIZES.paddingsmall,
+        paddingHorizontal: SIZES.paddingsmall,
+        borderRadius: 10,
+        backgroundColor: "white",
+        borderColor: COLORS.dishcoveryMedGrey,
+        borderWidth:1,
+        shadowColor: "#000",
+        shadowOffset: {
+        width: 0,
+        height: 0,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 5},
     subheading:{
         fontFamily: 'Inter-Medium',
         //marginHorizontal: SIZES.paddingsmall,
