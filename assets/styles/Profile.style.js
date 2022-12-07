@@ -7,7 +7,7 @@ export default StyleSheet.create({
     buttonContainer:{
         height:55,
         marginLeft:30,
-        marginRight:30,
+        //marginRight:30,
         marginBottom:130,
         marginTop: 5,
         padding:0,
@@ -38,7 +38,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         flexWrap: 'wrap',
-        marginLeft: 15,
+        //marginLeft: 15,
         marginBottom: 15,
         marginTop: 10
     },

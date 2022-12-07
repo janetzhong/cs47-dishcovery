@@ -5,20 +5,22 @@ import {
     Text,
     TouchableOpacity,
     Image, 
-    StyleSheet
+    StyleSheet,
+    SafeAreaView
 } from 'react-native';
 import { useFonts } from 'expo-font';
 
 
 // import styles from '../../assets/styles/ScanFlow.style.js'
-
+import commonStyles from '../../assets/styles/CommonStyles.styles';
   
 const ScanIntroScreen = ({ navigation }) => {
     const [fontsLoaded] = useFonts({
         'Inter-SemiBold': require('../../assets/fonts/Inter-SemiBold.ttf'),
       });
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={commonStyles.whiteBackground}>
+          <View style={commonStyles.outerView}>
             <View style={styles.imageBox}>
                 <Image source={pumpkinsoup} style = {styles.image}></Image>
             </View>
@@ -29,7 +31,8 @@ const ScanIntroScreen = ({ navigation }) => {
             <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Screen")}>
             <Text style={styles.ButtonTextStyle}> Begin Scan </Text>
             </TouchableOpacity>
-        </View>
+          </View>
+        </SafeAreaView>
     )
 }
 
@@ -43,9 +46,9 @@ const styles = StyleSheet.create({
       },
       imageBox:{
         flex: 8,
-        marginLeft:30,
-        marginRight:30,
-        marginTop:30,
+        //marginLeft:30,
+        //marginRight:30,
+        //marginTop:30,
         borderTopRightRadius:20,
         borderTopLeftRadius:20,
         // borderWidth: 1,
@@ -66,8 +69,8 @@ const styles = StyleSheet.create({
         },
       imageText:{
         flex: 1,
-        marginLeft:30,
-        marginRight:30,
+        //marginLeft:30,
+        //marginRight:30,
         marginBottom:30,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
@@ -85,8 +88,8 @@ const styles = StyleSheet.create({
     },
       buttonContainer:{
         height:55,
-        marginLeft:30,
-        marginRight:30,
+        //marginLeft:30,
+        //marginRight:30,
         marginBottom:140,
         padding:0,
         justifyContent:'center',
