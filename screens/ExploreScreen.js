@@ -51,12 +51,16 @@ const ExploreScreen = ({ navigation }) => {
                     />
                     <TextInput
                         style={{
+                            flex:1,
                             fontFamily:'Inter-Regular',
-                            fontSize:13,
-                            paddingVertical:10
+                            fontSize:14,paddingVertical:10
                         }}
                         placeholderTextColor={COLORS.gray}
                         placeholder="Search for an ingredient, dish or cuisine"
+                        clearButtonMode='while-editing'
+                        onChangeText={newText => setText(newText)}
+                        defaultValue={text}
+                        onSubmitEditing= {() => {setText('') ; navigation.navigate("Search Results")}}
                     />
                 </View>
 
