@@ -7,8 +7,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import textStyles from './assets/styles/TextStyles.style';
+import commonStyles from './assets/styles/CommonStyles.styles';
 
-import { LogBox } from 'react-native';
+import { LogBox, View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
@@ -105,12 +107,13 @@ export default function App() {
             shadowOpacity: 0.2,
             shadowRadius: 5,
           },
-          headerTitleStyle: {
-            fontFamily: 'Inter-SemiBold',
-            textTransform: 'uppercase',
-            color: COLORS.dishcoveryOrange
-          },
-
+          headerTitle: () => (
+            <View styles={commonStyles.headerView}>
+              <Text style={textStyles.dishcoveryHeaderTitle}>Dishcovery</Text>
+              <Text style={textStyles.pageHeaderTitle}>{route.name}</Text>
+            </View>
+          ),
+          
           headerRight: () => (
             <TouchableOpacity
               style={
