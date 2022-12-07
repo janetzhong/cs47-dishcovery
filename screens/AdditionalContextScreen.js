@@ -3,7 +3,8 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Image
+    Image,
+    SafeAreaView
 } from 'react-native';
 import ingredientContext from '../assets/ingredientContext';
 import {ExpandableListView} from 'react-native-expandable-listview';
@@ -11,6 +12,8 @@ import styles from '../assets/styles/ContextFlow.style';
 import bittermelon from '../assets/images/bittermelon.jpg';
 import cardamom from '../assets/images/cardamom.png';
 import lemongrass from '../assets/images/lemongrass.png';
+import commonStyles from '../assets/styles/CommonStyles.styles';
+import textStyles from '../assets/styles/TextStyles.style';
 
 const ingredientContexttest = ingredientContext
 
@@ -31,17 +34,12 @@ export default class App extends React.Component {
     })
   }
 
-  useEffect(capItemName) {
-    this.props.navigation.setOptions({title: capItemName})
-    this.props.navigation.setOptions({headerBackTitle: 'Back'})
-  }
-
   render() {
     const { itemKey } = this.props.route.params;
     const itemKeySplit = itemKey.split(" Accuracy");     // ['bitter melon, ' Accuracy 0.99...'] This is not a good way to do it because it requires Accuracy be in that string but i was confused how to send filteredPredictions to params and so i sent item.key instead
     const itemName = itemKeySplit.shift(); 
     const capItemName = this.capitalizeFirstLetters(itemName);
-    this.useEffect(capItemName)
+    //this.useEffect(capItemName)
     switch(ingredientContexttest[itemName]["image"]) {
       case 'bittermelon':
         var imageName = bittermelon
@@ -164,24 +162,27 @@ export default class App extends React.Component {
     };
     
     return (
-
-      <View style={styles.container}>
-        <View style={styles.imageBox}>
-          <Image source={imageName} style={styles.image}></Image>
+      <SafeAreaView style={commonStyles.whiteBackground}>
+        <View style={commonStyles.outerView}>
+          <View style={styles.container}>
+            <Text style={[textStyles.subheading, {textAlign: 'center'}]}>{capItemName}</Text>
+            <View style={styles.imageBox}>
+              <Image source={imageName} style={styles.image}></Image>
+            </View>
+            <ExpandableListView
+              data={CONTENT}
+              ExpandableListViewStyles={styles.container}
+              itemContainerStyle={styles.outerExpandBox}
+              innerItemContainerStyle={styles.innerExpandBox}
+              customChevron={require('../assets/icons/chevron.jpeg')}
+            />
+            
+            <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Explore")}>
+              <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <ExpandableListView
-          data={CONTENT}
-          ExpandableListViewStyles={styles.container}
-          itemContainerStyle={styles.outerExpandBox}
-          innerItemContainerStyle={styles.innerExpandBox}
-          customChevron={require('../assets/icons/chevron.jpeg')}
-        />
-        
-        <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Explore")}>
-          <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
-        </TouchableOpacity>
-      </View>
-
+      </SafeAreaView>
       
 
 

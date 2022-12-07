@@ -52,8 +52,8 @@ export default StyleSheet.create({
   },
       buttonContainer:{
         height:55,
-        marginLeft:30,
-        marginRight:30,
+        //marginLeft:30,
+        //marginRight:30,
         marginBottom:130,
         marginTop: 5,
         padding:0,
@@ -111,7 +111,7 @@ export default StyleSheet.create({
       width: "85%",
     },
     scanningGif:{
-      flex:1.6,
+      flex:2,
       resizeMode:'contain', 
       alignSelf:'center',
       alignItems: "center", 
@@ -119,7 +119,7 @@ export default StyleSheet.create({
       // borderWidth: 1,
       //  borderColor: 'red',
        height: '30%',
-        width: '90%',
+        width: '100%',
         opacity: 0.5,
         shadowOffset: {
           width: 0,
@@ -130,7 +130,7 @@ export default StyleSheet.create({
       
     },
     scanningImage:{
-      flex:1.6,
+      flex:2,
       resizeMode:'contain', 
       alignSelf:'center',
       alignItems: "center", 
@@ -151,8 +151,8 @@ export default StyleSheet.create({
       display: 'flex',
       flexDirection: 'row',
       height:55,
-      marginLeft:30,
-      marginRight:30,
+      //marginLeft:30,
+      //marginRight:30,
       marginBottom:130,
       marginTop: 5,
       padding:0,

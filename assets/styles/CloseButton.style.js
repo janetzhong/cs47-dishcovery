@@ -21,8 +21,6 @@ const styles = StyleSheet.create({
         borderWidth:BORDER_WIDTH,
         borderRadius:BUTTON_SIZE/2,
         alignSelf: 'flex-end',
-        marginRight: 15,
-        marginTop: 15,
         shadowOffset: {
             width: 0,
             height: 0,

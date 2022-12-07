@@ -4,8 +4,9 @@ import ExploreScreen from "./ExploreScreen"
 import LikedScreen from "./LikedScreen"
 import AdditionalContextScreen from "./AdditionalContextScreen"
 import ProfileScreen from "./ProfileScreen"
-import HomeScreen from "./HomeScreen"
 import RecipeScreen from "./RecipeScreen"
+import SearchScreen from "./SearchScreen"
+
 
 export {
     ScanScreen,
@@ -15,5 +16,5 @@ export {
     LikedScreen,
     AdditionalContextScreen,
     ProfileScreen,
-    HomeScreen
+    SearchScreen
 }

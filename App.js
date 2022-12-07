@@ -2,13 +2,15 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
+import { SearchScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import textStyles from './assets/styles/TextStyles.style';
+import commonStyles from './assets/styles/CommonStyles.styles';
 
-import { LogBox } from 'react-native';
+import { LogBox, View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
@@ -45,7 +47,7 @@ const ScanStack = () => {
         initialRoutName="ScanIntroScreen">
          <Stack.Screen name="Scan Intro Screen" component={ScanIntroScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Scan Screen" component={ScanScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Additional Context" component={AdditionalContextScreen}  />
+         <Stack.Screen name="Additional Context" component={AdditionalContextScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     )
 }
@@ -53,10 +55,26 @@ const ScanStack = () => {
 const ExploreStack = ({route}) => {
     return (
       // have to change initialRoutname so back button on Recipe works from liked and scan screen
-      <Stack.Navigator initialRouteName={route.name === 'Liked' ? 'Liked' : 'Liked'} screenOptions={{cardStyle: { backgroundColor: '#fff' }}}>
+      <Stack.Navigator initialRoutName="Explore Screen" screenOptions={{
+        cardStyle: { backgroundColor: '#fff' },
+        headerTitleStyle: {
+          color: COLORS.dishcoveryOrange,
+          fontFamily:'Inter-SemiBold',
+          textTransform:'uppercase',
+          fontSize:13
+        },
+        headerBackTitle: null,
+        headerBackTitleStyle: {
+          color: COLORS.dishcoveryOrange,
+          fontFamily:'Inter-Regular',
+          fontSize:15
+        },
+        headerTintColor:  COLORS.dishcoveryOrange,
+      }}>
       {/* <Stack.Navigator initialRoutName="Explore">   */}
          <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Search Results" component={SearchScreen} options={{}} />
       </Stack.Navigator>
     )
 }
@@ -74,6 +92,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        backBehavior='history'
         screenOptions={({ route, navigation }) => ({
           backgroundColor: '#fff' ,
           tabBarActiveTintColor: COLORS.dishcoveryOrange,
@@ -104,12 +123,13 @@ export default function App() {
             shadowOpacity: 0.2,
             shadowRadius: 5,
           },
-          headerTitleStyle: {
-            fontFamily: 'Inter-SemiBold',
-            textTransform: 'uppercase',
-            color: COLORS.dishcoveryOrange
-          },
-
+          headerTitle: () => (
+            <View styles={commonStyles.headerView}>
+              <Text style={textStyles.dishcoveryHeaderTitle}>Dishcovery</Text>
+              <Text style={textStyles.pageHeaderTitle}>{route.name}</Text>
+            </View>
+          ),
+          
           headerRight: () => (
             <TouchableOpacity
               style={
@@ -141,7 +161,7 @@ export default function App() {
             return <Ionicons name={iconName} size={28} color= {color} />;
           } 
         })}>
-        {/* <Tab.Screen name="Home" component={HomeScreen} />           */}
+        {/* <Tab.Screen name="Search" component={SearchScreen} />           */}
         <Tab.Screen name="Explore" component={ExploreStack}  />
         <Tab.Screen name="Scan" component={ScanStack} />
         <Tab.Screen name="Liked" component={LikedScreen} />
