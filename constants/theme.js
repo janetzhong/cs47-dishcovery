@@ -7,6 +7,8 @@ export const COLORS = {
     dishcoveryOrange : '#DD6135',
     dishcoveryLightGrey :'#E3E8EB',
     dishcoveryNearBlack: '#444444',
+    dishcoveryMedGrey: "#BBBBBB",
+
     // old file
     darkGreen: "#229879",
     darkLime: "#1A8871",
