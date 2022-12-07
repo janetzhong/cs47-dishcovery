@@ -9,7 +9,7 @@ export default StyleSheet.create({
     },
     outerView: {
         flex: 1,
-        backgroundColor: 'blue',
+        //backgroundColor: 'blue',
         marginTop: '5%',
         marginLeft: '5%',
         marginRight: '5%',
