@@ -74,6 +74,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        backBehavior='history'
         screenOptions={({ route, navigation }) => ({
           backgroundColor: '#fff' ,
           tabBarActiveTintColor: COLORS.dishcoveryOrange,

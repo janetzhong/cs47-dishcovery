@@ -10,7 +10,9 @@ import textStyles from '../assets/styles/TextStyles.style';
 const ProfileScreen = ({ navigation }) => {
     return (
         <View style={styles.mainView}>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.goBack()}><Text>back</Text></TouchableOpacity>
             <Text style={textStyles.subheading}>Allergies and Sensitivities</Text>
+            <Text style={textStyles.body}>Unless you remove these preferences, recipes using these ingredients will not be shown to you.</Text>
             <View style={styles.filterGroupContainer}>
                 <TouchableOpacity style={styles.filterContainer} activeOpacity={0.5}>
                     <Text style={styles.ButtonTextStyle}>Gluten ✓</Text>
@@ -46,10 +48,6 @@ const ProfileScreen = ({ navigation }) => {
                 
             </View>
             <View style={styles.addMoreView}><Text style={textStyles.linkText}>Add More ›</Text></View>
-            <Text style={textStyles.body}>Unless you remove these preferences, recipes using these ingredients will not be shown to you.</Text>
-            <TouchableOpacity style={styles.buttonContainer} activeOpacity={0.5}>
-                <Text style={styles.ButtonTextStyle}>Edit Profile</Text>
-            </TouchableOpacity>
         </View>
     )
 }
