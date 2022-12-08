@@ -16,6 +16,7 @@ import {icons, COLORS, SIZES } from "../constants"
 import { Ionicons } from '@expo/vector-icons';
 import commonStyles from "../assets/styles/CommonStyles.styles";
 import CountryFlag from "react-native-country-flag";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const marginInfoBox = 200
 const gallerywidth = 280
@@ -45,7 +46,6 @@ const RecipeScreen = ({ navigation, route }) => {
             <TouchableOpacity style={styles.backbuttoncircle} onPress={() => navigation.goBack()}>
             <Image source={icons.back} style={styles.backbuttonarrow}/>
             </TouchableOpacity>
-
 
             {/* INGREDIENT BUTTON */}
              <Pressable style = {styles.heartButton} onPress={() => setIsLiked(!isLiked)} >
@@ -83,7 +83,7 @@ const RecipeScreen = ({ navigation, route }) => {
                         <Ionicons name="time" size={15} color= {COLORS.dishcoveryOrange} />
                         <Text style={styles.info}> {selectedRecipe?.duration}   </Text>
                         {/* <Ionicons name="location" size={13} color= {COLORS.dishcoveryOrange} /> */}
-                        {/* <CountryFlag isoCode={selectedRecipe?.countryicon} size={12} style = {{marginTop:2.2, borderWidth:0.5,borderColor: "light-grey"}}/> */}
+                        <CountryFlag isoCode={`${selectedRecipe?.countryicon}`} size={12} style = {{marginTop:2.2, borderWidth:0.5,borderColor: "light-grey"}}/>
                         <Text style={styles.info}> {selectedRecipe?.country}</Text>
                     </View>
 
@@ -115,25 +115,25 @@ const RecipeScreen = ({ navigation, route }) => {
                 </Text>): null}
                 {showRecipe ? (
                 <Text style={{marginTop: SIZES.padding}}>
-                    In a large mixing bowl, combine the oil, sugar, orange juice, honey, baking powder, baking soda, cinnamon, cloves, nutmeg, and vanilla extract. Mix well.
+                    <Icon name="numeric-1-circle" color={COLORS.dishcoveryOrange} size={15} /> In a large mixing bowl, combine the oil, sugar, orange juice, honey, baking powder, baking soda, cinnamon, cloves, nutmeg, and vanilla extract. Mix well.
 
-                    {"\n"}Gradually add the flour to the wet ingredients, mixing well until the dough comes together.
+                    {"\n"}<Icon name="numeric-2-circle" color={COLORS.dishcoveryOrange} size={15} /> Gradually add the flour to the wet ingredients, mixing well until the dough comes together.
 
-                    {"\n"}Preheat your oven to 350°F (180°C).
+                    {"\n"}<Icon name="numeric-3-circle" color={COLORS.dishcoveryOrange} size={15} /> Preheat your oven to 350°F (180°C).
 
-                    {"\n"}Roll the dough into small balls and place them on a baking sheet lined with parchment paper.
+                    {"\n"}<Icon name="numeric-4-circle" color={COLORS.dishcoveryOrange} size={15} /> Roll the dough into small balls and place them on a baking sheet lined with parchment paper.
 
-                    {"\n"}Bake the cookies for 15-20 minutes, or until they are lightly golden.
+                    {"\n"}<Icon name="numeric-5-circle" color={COLORS.dishcoveryOrange} size={15} /> Bake the cookies for 15-20 minutes, or until they are lightly golden.
 
-                    {"\n"}Meanwhile, make the syrup by combining the sugar, honey, water, cinnamon stick, and lemon zest in a saucepan over medium heat. Bring to a boil, stirring constantly, and then reduce the heat to low and simmer for 10 minutes.
+                    {"\n"}<Icon name="numeric-6-circle" color={COLORS.dishcoveryOrange} size={15} /> Meanwhile, make the syrup by combining the sugar, honey, water, cinnamon stick, and lemon zest in a saucepan over medium heat. Bring to a boil, stirring constantly, and then reduce the heat to low and simmer for 10 minutes.
 
-                    {"\n"}Remove the cookies from the oven and let them cool slightly.
+                    {"\n"}<Icon name="numeric-7-circle" color={COLORS.dishcoveryOrange} size={15} /> Remove the cookies from the oven and let them cool slightly.
 
-                    {"\n"}Dip the cookies in the syrup and then transfer them to a plate.
+                    {"\n"}<Icon name="numeric-8-circle" color={COLORS.dishcoveryOrange} size={15} /> Dip the cookies in the syrup and then transfer them to a plate.
 
-                    {"\n"}Sprinkle the chopped walnuts and confectioners' sugar over the top of the cookies.
+                    {"\n"}<Icon name="numeric-9-circle" color={COLORS.dishcoveryOrange} size={15} /> Sprinkle the chopped walnuts and confectioners' sugar over the top of the cookies.
 
-                    {"\n"}Serve the melomakarona warm or at room temperature. Enjoy!
+                    {"\n"}<Icon name="numeric-10-circle" color={COLORS.dishcoveryOrange} size={15} /> Serve the melomakarona warm or at room temperature. Enjoy!
                     </Text>): null}
                 {showContext ? (<Text style={{marginTop: SIZES.padding}}>{selectedRecipe?.culturalContext}</Text>) : null}
 
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         borderRadius:99,
         height:50,
         width:50,
-        margin:10,
+        margin:20,
         backgroundColor:'white',
         alignItems: 'center',
         justifyContent: 'center',
@@ -233,8 +233,7 @@ const styles = StyleSheet.create({
         textTransform:'uppercase',
         fontSize:10,
         fontFamily:'Inter-SemiBold',
-        letterSpacing: 1,
-    
+        letterSpacing: 1
     }
 })
     
