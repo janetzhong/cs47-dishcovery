@@ -74,7 +74,7 @@ const ExploreStack = ({route}) => {
       {/* <Stack.Navigator initialRoutName="Explore">   */}
          <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Search Results" component={SearchScreen} options={{}} />
+         <Stack.Screen name="Search Results" component={SearchScreen} />
       </Stack.Navigator>
     )
 }
@@ -171,7 +171,12 @@ export default function App() {
         tabBarButton: () => null,
         tabBarVisible:false //hide tab bar on this screen
         }}
-/>
+        />
+        <Tab.Screen name="Search Results" component={SearchScreen} 
+        options={{
+        tabBarButton: () => null,
+        tabBarVisible:false //hide tab bar on this screen
+        }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -12,7 +12,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants"
 import DishCard from '../components/DishCard.js';
-
+import { TrendingCard } from "../components"
+import { styles } from "react-native-expandable-listview/src/styles";
 import commonStyles from '../assets/styles/CommonStyles.styles';
 
 console.log(dummyData.trendingRecipes)
@@ -55,7 +56,7 @@ const ExploreScreen = ({ navigation }) => {
                             fontSize:14,paddingVertical:10
                         }}
                         placeholderTextColor={COLORS.gray}
-                        placeholder="Search ingredient, dish or cuisine"
+                        placeholder="Search for an ingredient, dish or cuisine"
                         clearButtonMode='while-editing'
                         onChangeText={newText => setText(newText)}
                         defaultValue={text}
@@ -78,7 +79,12 @@ const ExploreScreen = ({ navigation }) => {
     }
 
     function renderCardSection() {
-                return (<View style={{marginTop : SIZES.paddingsmall}}>
+                return (
+                    <View
+                    style={{
+                        marginTop : SIZES.paddingsmall
+                    }}
+                    >
                     <Text style={[styles2.subheading, {marginLeft: '5%', paddingLeft: '1%'}]}>
                             Based On Your Scans
                         </Text>
@@ -90,11 +96,16 @@ const ExploreScreen = ({ navigation }) => {
                         renderItem={({item, index}) => {
                             return (
                                 <DishCard
-                                containerStyle = {{marginLeft: index == 0 ? 30 : 6}}
+                                containerStyle = {{
+                                    //marginLeft: 6 // line dif than code, 54:20 
+                                    marginLeft: index == 0 ? 30 : 6
+                                }}
                                 recipeItem={item}
-                                onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}/>
+                                onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}
+                                />
                             )
-                        }}/>
+                        }}
+                        />
                     </View>
                 )
             }
@@ -126,7 +137,9 @@ const ExploreScreen = ({ navigation }) => {
         )
     }
     return (
-        <SafeAreaView style={commonStyles.whiteBackground}>
+        <SafeAreaView
+            style={commonStyles.whiteBackground}
+        >
             <View>
                 <FlatList
                     data={dummyData.categories}
@@ -159,6 +172,8 @@ const styles2 = StyleSheet.create({
         height: 45,
         alignItems: 'center',
         marginTop:15,
+        //marginHorizontal: SIZES.paddingsmall,
+        //paddingHorizontal: SIZES.paddingsmall,
         borderRadius: 10,
         backgroundColor: "white",
         borderColor: COLORS.dishcoveryMedGrey,
@@ -174,8 +189,8 @@ const styles2 = StyleSheet.create({
         fontFamily: 'Inter-Medium',
         //marginHorizontal: SIZES.paddingsmall,
         fontSize:20,
-        color:COLORS.dishcoveryNearBlack}, 
-    filterButton:{
+        color:COLORS.dishcoveryNearBlack
+}, filterButton:{
     flex:1,
     borderRadius:99,
     height:50,

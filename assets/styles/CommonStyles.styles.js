@@ -40,7 +40,14 @@ export default StyleSheet.create({
         borderColor: COLORS.lightGray,
         backgroundColor: "white",
         color:"black",
-        margin: 20
+        margin: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
     },
     backbuttonarrow: {
         position: 'absolute',
