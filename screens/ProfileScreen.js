@@ -31,7 +31,9 @@ export default class App extends React.Component {
                 <View style={commonStyles.outerView}>
                     <View style={styles.mainView}>
                         <Text style={textStyles.subheading}>Allergies and Sensitivities</Text>
+                        <View style={{height:'3%'}}></View>
                         <Text style={textStyles.body}>Unless you remove these preferences, recipes using these ingredients will not be shown to you.</Text>
+                        <View style={{height:'3%'}}></View>
                         <View style={styles.filterGroupContainer}>
                             <TouchableOpacity style={styles.filterContainer} activeOpacity={0.5}>
                                 <Text style={styles.ButtonTextStyle}>Gluten ✓</Text>
@@ -52,7 +54,9 @@ export default class App extends React.Component {
                                 <Text style={styles.ButtonTextStyle}>Banana ✓</Text>
                             </TouchableOpacity>
                         </View>
+                        <View style={{height:'2%'}}></View>
                         <View style={styles.addMoreView}><Text style={textStyles.linkText}>Add More ›</Text></View>
+                        <View style={{height:'7%'}}></View>
                         <Text style={textStyles.subheading}>Dietary Preferences</Text>
                         <View style={styles.filterGroupContainer}>
                             <TouchableOpacity style={styles.filterContainer} activeOpacity={0.5}>
