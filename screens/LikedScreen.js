@@ -19,13 +19,21 @@ import CountryFlag from "react-native-country-flag";
 import commonStyles from "../assets/styles/CommonStyles.styles";
 
 // TODO back button from recipe does not come back here because it is in a different stack navigator. need to fix
+const countriesvisited = [...new Set(dummyData.likedRecipes.map(recipe => recipe.countryicon))];
 
-  
+
 const LikedScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={commonStyles.whiteBackground}>
           <View style={commonStyles.outerView}>
-            <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={dummyData.bitterMelonRecipes} 
+            <Text style={styles.subheading}>
+              Countries Dishcovered:
+            </Text>
+            <View style ={{flexDirection:'row', marginBottom:10 ,justifyContent:'center'}}>
+            {countriesvisited.map(isocode => <CountryFlag isoCode={isocode} size={13} style={{margin:3,borderWidth:0.5,borderColor: "light-grey"}}/>)}
+            </View>
+            
+            <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={dummyData.likedRecipes} 
               renderItem={({ item }) => {
                 return (
                   <TouchableHighlight onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}>
@@ -111,6 +119,14 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 10,
+  },
+  subheading:{
+    textAlign:'center',
+    marginBottom:10,
+    color: COLORS.dishcoveryOrange,
+    fontFamily:'Inter-SemiBold',
+    textTransform:'uppercase',
+    fontSize:13
   },
   photo: {
     width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,

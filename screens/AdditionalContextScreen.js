@@ -52,6 +52,16 @@ export default class App extends React.Component {
       case 'lemongrass':
         var imageName = lemongrass
     }
+    switch(ingredientContexttest[itemName]["image"]) {
+      case 'bittermelon':
+        var innerImageName = bittermelon
+        break;
+      case 'cardamom':
+        var innerImageName = cardamom
+        break;
+      case 'lemongrass':
+        var innerImageName = lemongrass
+    }
     const CONTENT = [
       {
         id: '97',
@@ -83,7 +93,7 @@ export default class App extends React.Component {
             customInnerItem: (
               <View style={styles.innerExpandBox}>
                 {/* <View style={styles.expandImageBox}>
-                  <Image source={imageName} style={styles.expandImage}></Image>
+                  <Image source={innerImageName} style={styles.expandImage}></Image>
                 </View> */}
                 <View style={styles.textContainerStyle}>
                   {Object.entries(ingredientContexttest[itemName]["new alternate names"]).map(([key, value]) => (

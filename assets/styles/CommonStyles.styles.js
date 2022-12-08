@@ -17,8 +17,43 @@ export default StyleSheet.create({
         paddingRight: '1%',
         paddingTop: '1%',
     },
+    outerViewScroll: {
+        flex: 1,
+        //backgroundColor: 'blue',
+        marginTop: '5%',
+        //paddingLeft: '1%',
+        //paddingRight: '1%',
+        paddingTop: '1%',
+    },
     whiteBackground: {
         flex: 1,
         backgroundColor: COLORS.white,
-    }
+    },
+    backbuttoncircle :{
+        position: 'absolute',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 35,
+        width: 35,
+        borderRadius: 18,
+        borderWidth: 1,
+        borderColor: COLORS.lightGray,
+        backgroundColor: "white",
+        color:"black",
+        margin: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+    },
+    backbuttonarrow: {
+        position: 'absolute',
+        width: 15,
+        height: 15,
+        tintColor: "black",
+        color:"black"
+        },
 });

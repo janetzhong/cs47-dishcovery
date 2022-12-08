@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
           width: 0,
           height: 0,
         },
-        shadowOpacity: 0.05,
-        shadowRadius: 5,
+        shadowOpacity: 0.2,
+        shadowRadius: 15,
       },
       image:{
         flex: 1,
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
           width: 0,
           height: 0,
         },
-        shadowOpacity: 0.05,
-        shadowRadius: 5,
+        shadowOpacity: 0.2,
+        shadowRadius: 15,
     },
       buttonContainer:{
         height:55,

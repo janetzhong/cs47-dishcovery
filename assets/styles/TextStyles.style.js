@@ -23,8 +23,9 @@ export default StyleSheet.create({
         fontFamily: 'Inter-SemiBold',
         textTransform: 'uppercase',
         color: COLORS.dishcoveryOrange,
-        fontSize:14,
+        fontSize:13,
         textAlign: 'center',
+        // letterSpacing: 1,
         marginBottom:2,
     },
     pageHeaderTitle: {
@@ -33,6 +34,6 @@ export default StyleSheet.create({
         color: COLORS.dishcoveryOrange,
         textAlign: 'center',
         fontSize:17,
-        marginBottom:6
+        marginBottom:6,
     }
 });
