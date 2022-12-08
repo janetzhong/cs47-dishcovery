@@ -213,7 +213,7 @@ const bitterMelonRecipes = [
         difficulty: "Med",
         country: "Phillipines",
         countryicon: "ph",
-        culturalContext: "Ginisang Ampalaya at Itlog is a Filipino dish of stir fried bitter gourd, tomatoes and egg usually served as breakfast or as a side dish. Simple vegetable recipes like this are a comfort meal to a majority of the Filipinos who are out of their teenager years.",
+        culturalContext: "Ginisang ampalaya, or sautéed bitter melon, is a popular dish in the Philippines. It is often cooked with eggs and ground meat, and is known for its distinct bitter flavor. It is commonly used in traditional medicine to treat a variety of ailments, such as diabetes and high blood pressure. Because of its bitterness, it is also sometimes used in Philippine cuisine as a way to balance out the sweetness of other dishes. Overall, ginisang ampalaya is a beloved and well-known dish in the Philippines that is deeply rooted in the country's culture and history.",
         serving: 10,
         isBookmark: true,
         category: "Local",
