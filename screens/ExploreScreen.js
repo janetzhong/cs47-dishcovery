@@ -60,15 +60,22 @@ const ExploreScreen = ({ navigation }) => {
                     />
                 </View>
 
-                <View style={{
+                {/* <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',
                 paddingLeft: 10,
                 paddingTop: 10,
                 }}>
+
+                    <TouchableOpacity>
                     <Ionicons name="options" size={30} color= {COLORS.dishcoveryOrange} justifyContent={'center'} alignItems={'center'} marginLeft= {30}/>
-                </View>
-                    {/* <TouchableOpacity style = {styles.filterButton}><Ionicons name="options" size={25} color= {COLORS.black} /></TouchableOpacity> */}
+                    </TouchableOpacity>
+
+                </View> */}
+
+                <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Screen")}>
+                    <Ionicons name="options" size={30} color= {COLORS.dishcoveryOrange} justifyContent={'center'} alignItems={'center'} marginLeft= {30}/>
+                </TouchableOpacity>
 
             </SafeAreaView>
         )
@@ -203,5 +210,18 @@ const styles2 = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-}
+}, buttonContainer:{
+    height:55,
+    width:55,
+    borderRadius: 5,
+    //marginBottom:140,
+    //padding:0,
+    justifyContent:'center',
+    backgroundColor:'#DD6135',
+
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingTop: 10,
+  }
 })

@@ -12,8 +12,10 @@ import styles from '../assets/styles/ContextFlow.style';
 import bittermelon from '../assets/images/bittermelon.jpg';
 import cardamom from '../assets/images/cardamom.png';
 import lemongrass from '../assets/images/lemongrass.png';
+import bittermelon_origins from "../assets/images/bittermelon_origins.png";
 import commonStyles from '../assets/styles/CommonStyles.styles';
 import textStyles from '../assets/styles/TextStyles.style';
+import { COLORS } from '../constants';
 
 const ingredientContexttest = ingredientContext
 
@@ -39,7 +41,7 @@ export default class App extends React.Component {
     const itemKeySplit = itemKey.split(" Accuracy");     // ['bitter melon, ' Accuracy 0.99...'] This is not a good way to do it because it requires Accuracy be in that string but i was confused how to send filteredPredictions to params and so i sent item.key instead
     const itemName = itemKeySplit.shift(); 
     const capItemName = this.capitalizeFirstLetters(itemName);
-    //this.useEffect(capItemName)
+    this.useEffect(capItemName)
     switch(ingredientContexttest[itemName]["image"]) {
       case 'bittermelon':
         var imageName = bittermelon
@@ -60,9 +62,9 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
-                <View style={styles.expandImageBox}>
+                {/* <View style={styles.expandImageBox}>
                   <Image source={imageName} style={styles.expandImage}></Image>
-                </View>
+                </View> */}
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["flavor profile/texture"]}</Text>
                 </View>
@@ -80,11 +82,16 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
-                <View style={styles.expandImageBox}>
+                {/* <View style={styles.expandImageBox}>
                   <Image source={imageName} style={styles.expandImage}></Image>
-                </View>
+                </View> */}
                 <View style={styles.textContainerStyle}>
-                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["alternate names"]}</Text>
+                  {Object.entries(ingredientContexttest[itemName]["new alternate names"]).map(([key, value]) => (
+                      <Text style={{fontSize: 15, lineHeight: 25}}>
+                      <Text style={{fontWeight: 'bold', color: COLORS.dishcoveryOrange}}>{key}: </Text>
+                      <Text style={{fontWeight: 'normal'}}>{value}</Text>
+                      </Text>
+                  ))}
                 </View>
               </View> 
             ),
@@ -100,11 +107,13 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
-                <View style={styles.expandImageBox}>
-                  <Image source={imageName} style={styles.expandImage}></Image>
-                </View>
                 <View style={styles.textContainerStyle}>
-                  <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["cultural context"]}</Text>
+                  {Object.entries(ingredientContexttest[itemName]["new cultural context"]).map(([key, value]) => (
+                      <Text style={{fontSize: 15, lineHeight: 25}}>
+                      <Text style={{fontWeight: 'bold', color: COLORS.dishcoveryOrange}}>{key}: </Text>
+                      <Text style={{fontWeight: 'normal'}}>{value}</Text>
+                      </Text>
+                  ))}
                 </View>
               </View> 
             ),
@@ -121,7 +130,7 @@ export default class App extends React.Component {
             customInnerItem: (
               <View style={styles.innerExpandBox}>
                 <View style={styles.expandImageBox}>
-                  <Image source={imageName} style={styles.expandImage}></Image>
+                  <Image source={bittermelon_origins} style={styles.expandImage}></Image>
                 </View>
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["origins and geography"]}</Text>
@@ -140,9 +149,9 @@ export default class App extends React.Component {
             name: '',
             customInnerItem: (
               <View style={styles.innerExpandBox}>
-                <View style={styles.expandImageBox}>
+                {/* <View style={styles.expandImageBox}>
                   <Image source={imageName} style={styles.expandImage}></Image>
-                </View>
+                </View> */}
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["health benefits"]}</Text>
                 </View>

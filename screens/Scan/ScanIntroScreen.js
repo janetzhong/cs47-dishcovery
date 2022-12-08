@@ -28,6 +28,9 @@ const ScanIntroScreen = ({ navigation }) => {
             <Text style={styles.TextStyle}>Place your item within the frame and click to scan.</Text>
             </View>
             
+            {/* added to add additional context to bittermelon */}
+            {/* <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={() => {navigation.navigate("Additional Context", {itemKey: "bittermelon"})}}> */}
+            
             <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Screen")}>
             <Text style={styles.ButtonTextStyle}> Begin Scan </Text>
             </TouchableOpacity>
