@@ -17,6 +17,16 @@ export default StyleSheet.create({
         paddingRight: '1%',
         paddingTop: '1%',
     },
+    outerViewSearch: {
+        flex: 1,
+        //backgroundColor: 'blue',
+        //marginTop: '5%',
+        //marginLeft: '2%',
+        //marginRight: '2%',
+        //paddingLeft: '1%',
+        //paddingRight: '1%',
+        //paddingTop: '1%',
+    },
     outerViewScroll: {
         flex: 1,
         //backgroundColor: 'blue',

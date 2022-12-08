@@ -15,11 +15,24 @@ import lemongrass from '../assets/images/lemongrass.png';
 import bittermelon_origins from "../assets/images/bittermelon_origins.png";
 import commonStyles from '../assets/styles/CommonStyles.styles';
 import textStyles from '../assets/styles/TextStyles.style';
-import { COLORS } from '../constants';
+import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants";
 
 const ingredientContexttest = ingredientContext
 
 export default class App extends React.Component {
+  useEffect(capItemName) {
+    this.props.navigation.setOptions({
+        headerLeft: () => (
+                <TouchableOpacity style={commonStyles.backbuttoncircle} onPress={() => this.props.navigation.goBack()}>
+                <Image source={icons.back} style={commonStyles.backbuttonarrow}/>
+                </TouchableOpacity>
+            ),
+        headerTitle: `${capItemName.toUpperCase()}`,
+        headerTitleStyle: {
+          color: COLORS.dishcoveryOrange,
+        }
+    })
+  }
   
   
   handleItemClick({index}) {
@@ -184,7 +197,7 @@ export default class App extends React.Component {
       <SafeAreaView style={commonStyles.whiteBackground}>
         <View style={commonStyles.outerView}>
           <View style={styles.container}>
-            <Text style={[textStyles.subheading, {textAlign: 'center'}]}>{capItemName}</Text>
+            {/* <Text style={[textStyles.subheading, {textAlign: 'center'}]}>{capItemName}</Text> */}
             <View style={styles.imageBox}>
               <Image source={imageName} style={styles.image}></Image>
             </View>
