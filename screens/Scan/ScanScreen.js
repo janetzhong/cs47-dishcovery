@@ -139,10 +139,10 @@ export default class App extends React.Component {
                 null:<Image source={require('../../assets/images/scanpage/scan_gif_v2.gif')} style = { styles.scanningGif}></Image>
                 }
                 {this.state.ingredientNotRecognized ? 
-                <Image source={require('../../assets/images/scanpage/scan_red.png')} style = { styles.scanningImage}></Image>:null
+                <Image source={require('../../assets/images/scanpage/scan_red_v2.png')} style = { styles.scanningImage}></Image>:null
                 }
                 {this.state.ingredientRecognized ? 
-                <Image source={require('../../assets/images/scanpage/scan_green.png')} style = { styles.scanningImage}></Image>:null
+                <Image source={require('../../assets/images/scanpage/scan_green_v2.png')} style = { styles.scanningImage}></Image>:null
                 }
 
                 <View
