@@ -30,28 +30,33 @@ export default class App extends React.Component {
                   <Image source={icons.back} style={commonStyles.backbuttonarrow}/>
                   </TouchableOpacity>
               ),
-          headerTitle: 'RECIPES: BITTER MELON'
+          headerTitle: 'RECIPES: BITTER MELON',
+          headerTitleStyle: {
+            color: COLORS.dishcoveryOrange
+          }
       })
     }
     render() {
       this.useEffect()
       return (
-              <View style={{margin:SIZES.padding/2}}>
+              <View style={commonStyles.outerViewSearch}>
                       {/* <Text style={{marginHorizontal: SIZES.padding, ...FONTS.h2}}>
                           Countries visited through recipes:
                       </Text> */}
                   <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={dummyData.bitterMelonRecipes} 
-                  renderItem={({ item }) => {
+                  renderItem={({ item, index }) => {
                       return (
                           <TouchableHighlight onPress={() => this.props.navigation.navigate("Recipe Screen", { recipe: item})}>
       
-                          <View style={styles.container}>
+                          <View style={[styles.container, {
+                                    marginLeft: index == 0 || index == 2 ? 25 : 10
+                                }]}>
                             <ImageBackground style={styles.photo} imageStyle={styles.imagephoto} resizeMode="cover" source={item.image} >
                             <View
                       style={{
                           position: 'absolute',
                           margin:7,
-                          paddingHorizontal: SIZES.radiussmall,
+                          //paddingHorizontal: SIZES.radiussmall,
                           paddingVertical: 5,
                           backgroundColor: "white",
                           borderRadius: SIZES.radius,
@@ -105,7 +110,10 @@ export default class App extends React.Component {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            margin: 6,
+            //margin: 6,
+            //marginRight: 12,
+            marginLeft: '6%',
+            marginBottom: 6,
             width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,
             height: RECIPE_ITEM_HEIGHT + 55,
             borderColor: '#cccccc',
