@@ -196,7 +196,7 @@ export default class App extends React.Component {
               customChevron={require('../assets/icons/chevron.jpeg')}
             />
             
-            <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Explore")}>
+            <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Search Results")}>
               <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
             </TouchableOpacity>
           </View>
