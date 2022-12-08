@@ -47,7 +47,7 @@ const ScanStack = () => {
         initialRoutName="ScanIntroScreen">
          <Stack.Screen name="Scan Intro Screen" component={ScanIntroScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Scan Screen" component={ScanScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Additional Context" component={AdditionalContextScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Additional Context" component={AdditionalContextScreen} />
       </Stack.Navigator>
     )
 }

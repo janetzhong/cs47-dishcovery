@@ -15,11 +15,24 @@ import lemongrass from '../assets/images/lemongrass.png';
 import bittermelon_origins from "../assets/images/bittermelon_origins.png";
 import commonStyles from '../assets/styles/CommonStyles.styles';
 import textStyles from '../assets/styles/TextStyles.style';
-import { COLORS } from '../constants';
+import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants";
 
 const ingredientContexttest = ingredientContext
 
 export default class App extends React.Component {
+  useEffect(capItemName) {
+    this.props.navigation.setOptions({
+        headerLeft: () => (
+                <TouchableOpacity style={commonStyles.backbuttoncircle} onPress={() => this.props.navigation.goBack()}>
+                <Image source={icons.back} style={commonStyles.backbuttonarrow}/>
+                </TouchableOpacity>
+            ),
+        headerTitle: `${capItemName.toUpperCase()}`,
+        headerTitleStyle: {
+          color: COLORS.dishcoveryOrange,
+        }
+    })
+  }
   
   
   handleItemClick({index}) {
@@ -41,7 +54,7 @@ export default class App extends React.Component {
     const itemKeySplit = itemKey.split(" Accuracy");     // ['bitter melon, ' Accuracy 0.99...'] This is not a good way to do it because it requires Accuracy be in that string but i was confused how to send filteredPredictions to params and so i sent item.key instead
     const itemName = itemKeySplit.shift(); 
     const capItemName = this.capitalizeFirstLetters(itemName);
-    //this.useEffect(capItemName)
+    this.useEffect(capItemName)
     switch(ingredientContexttest[itemName]["image"]) {
       case 'bittermelon':
         var imageName = bittermelon
@@ -184,7 +197,7 @@ export default class App extends React.Component {
       <SafeAreaView style={commonStyles.whiteBackground}>
         <View style={commonStyles.outerView}>
           <View style={styles.container}>
-            <Text style={[textStyles.subheading, {textAlign: 'center'}]}>{capItemName}</Text>
+            {/* <Text style={[textStyles.subheading, {textAlign: 'center'}]}>{capItemName}</Text> */}
             <View style={styles.imageBox}>
               <Image source={imageName} style={styles.image}></Image>
             </View>
