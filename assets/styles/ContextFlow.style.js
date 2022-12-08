@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
+import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -40,7 +41,9 @@ export default StyleSheet.create({
             width: 0,
             height: 3,
         },
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.01,
+        //borderColor: COLORS.dishcoveryLightGrey,
+        //borderWidth: 2,
     },
     TextStyle: {
         fontSize: 15,

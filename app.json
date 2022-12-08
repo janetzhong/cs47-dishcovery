@@ -1,4 +1,28 @@
 {
   "name": "cs47-dishcovery",
-  "displayName": "Dishcovery"
+  "owner": "amritapv",
+  "extra": {
+    "eas": {
+      "projectId": "d4618337-8f75-4547-82d9-bc8ad8c5366c"
+    }
+  },
+  "expo": {
+    "android": {
+      "package": "com.amritapv.cs47dishcovery"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d4618337-8f75-4547-82d9-bc8ad8c5366c"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.amritapv.cs47dishcovery"
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d4618337-8f75-4547-82d9-bc8ad8c5366c"
+    }
+  }
 }
