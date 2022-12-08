@@ -27,7 +27,7 @@ const LikedScreen = ({ navigation }) => {
         <SafeAreaView style={commonStyles.whiteBackground}>
           <View style={commonStyles.outerView}>
             <Text style={styles.subheading}>
-              Countries Dishcovered by Recipe:
+              Countries Dishcovered:
             </Text>
             <View style ={{flexDirection:'row', marginBottom:10 ,justifyContent:'center'}}>
             {countriesvisited.map(isocode => <CountryFlag isoCode={isocode} size={13} style={{margin:3,borderWidth:0.5,borderColor: "light-grey"}}/>)}

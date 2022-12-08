@@ -612,6 +612,59 @@ const christmasRecipes = [
 // Fake liked recipes for demo
 const likedRecipes = [
     {
+        id: 4,
+        name: "Melomakarona",
+        image: images.melomakarona,
+        duration: "1 hr",
+        difficulty: "Easy",
+        country: "Greece",
+        countryicon: "gr",
+        culturalContext: "Sweet orange-zest cookies soaked in honey and topped with walnuts? Yes, please! This item is a holiday treat that regularly appears on tables in Greece. Known as melomakarona, these cookies are often said to taste much like baklava. Immediately after they’re baked, melomakarona are soaked in a honey-sugar water mixture then sprinkled with walnuts. There is also a less traditional version of this recipe dipped in dark chocolate.",
+        serving: 1,
+        isBookmark: true,
+        category: "Local",
+        ingredients: [
+            {
+                id: 1,
+                icon: icons.garlic,
+                description: "Garlic cloves",
+                quantity: "3"
+            },
+            {
+                id: 2,
+                icon: icons.lemongrass,
+                description: "Lemongrass",
+                quantity: "2 stalks"
+            },
+            {
+                id: 3,
+                icon: icons.egg,
+                description: "Egg",
+                quantity: "2"
+            },
+            {
+                id: 4,
+                icon: icons.shrimp,
+                description: "Fresh Shrimp",
+                quantity: "100g"
+            },
+            {
+                id: 5,
+                icon: icons.shallot,
+                description: "Shallot",
+                quantity: "4"
+            },
+            {
+                id: 6,
+                icon: icons.pasta,
+                description: "vermicelli",
+                quantity: "100g"
+            },
+
+
+        ],
+    },
+    {
         id: 1001,
         name: "Spaghetti With Shrimp Sauce",
         image: images.spagetti,
@@ -950,59 +1003,6 @@ const likedRecipes = [
                 icon: icons.anchovy,
                 description: "Dried anchovies",
                 quantity: "3 cups"
-            },
-
-
-        ],
-    },
-    {
-        id: 4,
-        name: "Melomakarona",
-        image: images.melomakarona,
-        duration: "1 hr",
-        difficulty: "Easy",
-        country: "Greece",
-        countryicon: "gr",
-        culturalContext: "Sweet orange-zest cookies soaked in honey and topped with walnuts? Yes, please! This item is a holiday treat that regularly appears on tables in Greece. Known as melomakarona, these cookies are often said to taste much like baklava. Immediately after they’re baked, melomakarona are soaked in a honey-sugar water mixture then sprinkled with walnuts. There is also a less traditional version of this recipe dipped in dark chocolate.",
-        serving: 1,
-        isBookmark: true,
-        category: "Local",
-        ingredients: [
-            {
-                id: 1,
-                icon: icons.garlic,
-                description: "Garlic cloves",
-                quantity: "3"
-            },
-            {
-                id: 2,
-                icon: icons.lemongrass,
-                description: "Lemongrass",
-                quantity: "2 stalks"
-            },
-            {
-                id: 3,
-                icon: icons.egg,
-                description: "Egg",
-                quantity: "2"
-            },
-            {
-                id: 4,
-                icon: icons.shrimp,
-                description: "Fresh Shrimp",
-                quantity: "100g"
-            },
-            {
-                id: 5,
-                icon: icons.shallot,
-                description: "Shallot",
-                quantity: "4"
-            },
-            {
-                id: 6,
-                icon: icons.pasta,
-                description: "vermicelli",
-                quantity: "100g"
             },
 
 
