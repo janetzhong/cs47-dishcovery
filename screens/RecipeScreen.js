@@ -48,9 +48,9 @@ const RecipeScreen = ({ navigation, route }) => {
             </TouchableOpacity>
 
             {/* INGREDIENT BUTTON */}
-             <Pressable style = {styles.heartButton} onPress={() => setIsLiked(!isLiked)} >
-                <Ionicons name ={isLiked ? 'heart' : 'heart-outline'} size={25} color= {COLORS.dishcoveryOrange}/>
-            </Pressable>
+                <Pressable style = {styles.heartButton} onPress={() => setIsLiked(!isLiked)} >
+                    <Ionicons name ={isLiked ? 'heart' : 'heart-outline'} size={25} color= {COLORS.dishcoveryOrange}/>
+                </Pressable>
         </ImageBackground>
         <View style={commonStyles.outerView}>
             <ScrollView style={styles.container}>
@@ -111,29 +111,40 @@ const RecipeScreen = ({ navigation, route }) => {
                     {"\n"}For the topping:
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 2 cups walnuts, finely chopped
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1/2 cup confectioners' sugar
-                
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
                 </Text>): null}
                 {showRecipe ? (
                 <Text style={{marginTop: SIZES.padding}}>
                     <Icon name="numeric-1-circle" color={COLORS.dishcoveryOrange} size={15} /> In a large mixing bowl, combine the oil, sugar, orange juice, honey, baking powder, baking soda, cinnamon, cloves, nutmeg, and vanilla extract. Mix well.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-2-circle" color={COLORS.dishcoveryOrange} size={15} /> Gradually add the flour to the wet ingredients, mixing well until the dough comes together.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-3-circle" color={COLORS.dishcoveryOrange} size={15} /> Preheat your oven to 350°F (180°C).
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-4-circle" color={COLORS.dishcoveryOrange} size={15} /> Roll the dough into small balls and place them on a baking sheet lined with parchment paper.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-5-circle" color={COLORS.dishcoveryOrange} size={15} /> Bake the cookies for 15-20 minutes, or until they are lightly golden.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-6-circle" color={COLORS.dishcoveryOrange} size={15} /> Meanwhile, make the syrup by combining the sugar, honey, water, cinnamon stick, and lemon zest in a saucepan over medium heat. Bring to a boil, stirring constantly, and then reduce the heat to low and simmer for 10 minutes.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-7-circle" color={COLORS.dishcoveryOrange} size={15} /> Remove the cookies from the oven and let them cool slightly.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-8-circle" color={COLORS.dishcoveryOrange} size={15} /> Dip the cookies in the syrup and then transfer them to a plate.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-9-circle" color={COLORS.dishcoveryOrange} size={15} /> Sprinkle the chopped walnuts and confectioners' sugar over the top of the cookies.
-
+                    {"\n"}
                     {"\n"}<Icon name="numeric-10-circle" color={COLORS.dishcoveryOrange} size={15} /> Serve the melomakarona warm or at room temperature. Enjoy!
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
+                    {"\n"}
                     </Text>): null}
                 {showContext ? (<Text style={{marginTop: SIZES.padding}}>{selectedRecipe?.culturalContext}</Text>) : null}
 
@@ -162,11 +173,13 @@ const styles = StyleSheet.create({
       },
     heartButton:{
         alignSelf:'flex-end',
-        position: 'absolute', bottom:0,
+        //position: 'absolute', 
+        bottom:0,
         borderRadius:99,
         height:50,
         width:50,
-        margin:20,
+        marginRight:7,
+        marginTop:'48%', 
         backgroundColor:'white',
         alignItems: 'center',
         justifyContent: 'center',
