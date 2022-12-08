@@ -87,8 +87,54 @@ const RecipeScreen = ({ navigation, route }) => {
                         <Text style={styles.info}> {selectedRecipe?.country}</Text>
                     </View>
 
-                {showIngredients ? (<Text style={{marginTop: SIZES.padding}}>yes to ingredient</Text>): null}
-                {showRecipe ? (<Text style={{marginTop: SIZES.padding}}>yes to recipe</Text>): null}
+                {showIngredients ? (
+                <Text style={{marginTop: SIZES.padding}}>  
+                    <Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup vegetable oil
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup sugar
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup orange juice
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup honey
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 tablespoon baking powder
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 teaspoon baking soda
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 teaspoon ground cinnamon
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 teaspoon ground cloves
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 teaspoon ground nutmeg
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 teaspoon vanilla extract
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 5 cups all-purpose flour
+                    {"\n"}
+                    {"\n"}For the syrup:
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup sugar
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup honey
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup water
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cinnamon stick
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 lemon, zested
+                    {"\n"}
+                    {"\n"}For the topping:
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 2 cups walnuts, finely chopped
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1/2 cup confectioners' sugar
+                
+                </Text>): null}
+                {showRecipe ? (
+                <Text style={{marginTop: SIZES.padding}}>
+                    In a large mixing bowl, combine the oil, sugar, orange juice, honey, baking powder, baking soda, cinnamon, cloves, nutmeg, and vanilla extract. Mix well.
+
+                    {"\n"}Gradually add the flour to the wet ingredients, mixing well until the dough comes together.
+
+                    {"\n"}Preheat your oven to 350°F (180°C).
+
+                    {"\n"}Roll the dough into small balls and place them on a baking sheet lined with parchment paper.
+
+                    {"\n"}Bake the cookies for 15-20 minutes, or until they are lightly golden.
+
+                    {"\n"}Meanwhile, make the syrup by combining the sugar, honey, water, cinnamon stick, and lemon zest in a saucepan over medium heat. Bring to a boil, stirring constantly, and then reduce the heat to low and simmer for 10 minutes.
+
+                    {"\n"}Remove the cookies from the oven and let them cool slightly.
+
+                    {"\n"}Dip the cookies in the syrup and then transfer them to a plate.
+
+                    {"\n"}Sprinkle the chopped walnuts and confectioners' sugar over the top of the cookies.
+
+                    {"\n"}Serve the melomakarona warm or at room temperature. Enjoy!
+                    </Text>): null}
                 {showContext ? (<Text style={{marginTop: SIZES.padding}}>{selectedRecipe?.culturalContext}</Text>) : null}
 
             </ScrollView>

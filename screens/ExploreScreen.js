@@ -55,7 +55,7 @@ const ExploreScreen = ({ navigation }) => {
                             fontSize:14,paddingVertical:10
                         }}
                         placeholderTextColor={COLORS.gray}
-                        placeholder="Search for an ingredient, dish or cuisine"
+                        placeholder="Search ingredient, dish or cuisine"
                         clearButtonMode='while-editing'
                         onChangeText={newText => setText(newText)}
                         defaultValue={text}
