@@ -3,6 +3,7 @@ import {
     View,
     Text,
     TouchableOpacity,
+    ScrollView,
     Image,
     SafeAreaView
 } from 'react-native';
@@ -13,6 +14,8 @@ import bittermelon from '../assets/images/bittermelon.jpg';
 import cardamom from '../assets/images/cardamom.png';
 import lemongrass from '../assets/images/lemongrass.png';
 import bittermelon_origins from "../assets/images/bittermelon_origins.png";
+import lemongrass_origins from "../assets/images/lemongrass_origins.png";
+import cardamom_origins from "../assets/images/cardamom_origins.png";
 import commonStyles from '../assets/styles/CommonStyles.styles';
 import textStyles from '../assets/styles/TextStyles.style';
 import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants";
@@ -55,6 +58,7 @@ export default class App extends React.Component {
     const itemName = itemKeySplit.shift(); 
     const capItemName = this.capitalizeFirstLetters(itemName);
     this.useEffect(capItemName)
+    //const itemName = "cardamom"
     switch(ingredientContexttest[itemName]["image"]) {
       case 'bittermelon':
         var imageName = bittermelon
@@ -67,13 +71,13 @@ export default class App extends React.Component {
     }
     switch(ingredientContexttest[itemName]["image"]) {
       case 'bittermelon':
-        var innerImageName = bittermelon
+        var origins_pic = bittermelon_origins
         break;
       case 'cardamom':
-        var innerImageName = cardamom
+        var origins_pic = cardamom_origins
         break;
       case 'lemongrass':
-        var innerImageName = lemongrass
+        var origins_pic = lemongrass_origins
     }
     const CONTENT = [
       {
@@ -153,7 +157,7 @@ export default class App extends React.Component {
             customInnerItem: (
               <View style={styles.innerExpandBox}>
                 <View style={styles.expandImageBox}>
-                  <Image source={bittermelon_origins} style={styles.expandImage}></Image>
+                  <Image source={origins_pic} style={styles.expandImage}></Image>
                 </View>
                 <View style={styles.textContainerStyle}>
                   <Text style={styles.TextStyle}>{ingredientContexttest[itemName]["origins and geography"]}</Text>
@@ -195,25 +199,28 @@ export default class App extends React.Component {
     
     return (
       <SafeAreaView style={commonStyles.whiteBackground}>
-        <View style={commonStyles.outerView}>
-          <View style={styles.container}>
-            {/* <Text style={[textStyles.subheading, {textAlign: 'center'}]}>{capItemName}</Text> */}
-            <View style={styles.imageBox}>
-              <Image source={imageName} style={styles.image}></Image>
-            </View>
-            <ExpandableListView
-              data={CONTENT}
-              ExpandableListViewStyles={styles.container}
-              itemContainerStyle={styles.outerExpandBox}
-              innerItemContainerStyle={styles.innerExpandBox}
-              customChevron={require('../assets/icons/chevron.jpeg')}
-            />
+          <View style={commonStyles.outerView}>
             
-            <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Search Results")}>
-              <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
-            </TouchableOpacity>
+            <View style={styles.container}>
+              {/* <Text style={[textStyles.subheading, {textAlign: 'center'}]}>{capItemName}</Text> */}
+
+              <View style={styles.imageBox}>
+                <Image source={imageName} style={styles.image}></Image>
+              </View>
+              <ExpandableListView
+                data={CONTENT}
+                ExpandableListViewStyles={styles.container}
+                itemContainerStyle={styles.outerExpandBox}
+                innerItemContainerStyle={styles.innerExpandBox}
+                customChevron={require('../assets/icons/chevron.jpeg')}
+              />
+              
+              <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Search Results")}>
+                <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
+              </TouchableOpacity>
+            </View>
+
           </View>
-        </View>
       </SafeAreaView>
       
 
