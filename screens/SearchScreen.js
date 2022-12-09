@@ -17,7 +17,7 @@ import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants"
 import { Ionicons } from '@expo/vector-icons';
 import CountryFlag from "react-native-country-flag";
 import commonStyles from "../assets/styles/CommonStyles.styles";
-
+import textStyles from "../assets/styles/TextStyles.style";
 // This is same gallery as liked page. one should make these gallery things into a component
 
 
@@ -30,9 +30,11 @@ export default class App extends React.Component {
                   <Image source={icons.back} style={commonStyles.backbuttonarrow}/>
                   </TouchableOpacity>
               ),
-          headerTitle: 'RECIPES: BITTER MELON',
-          headerTitleStyle: {
-            color: COLORS.dishcoveryOrange
+          headerTitle: 'Recipes: Bitter Melon',
+          headerTitleStyle: textStyles.subheading,
+          headerStyle: {
+            shadowColor: 'transparent',
+            elevation: 0,
           }
       })
     }
@@ -56,7 +58,7 @@ export default class App extends React.Component {
                       style={{
                           position: 'absolute',
                           margin:7,
-                          //paddingHorizontal: SIZES.radiussmall,
+                          paddingHorizontal: SIZES.radiussmall,
                           paddingVertical: 5,
                           backgroundColor: "white",
                           borderRadius: SIZES.radius,

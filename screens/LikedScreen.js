@@ -86,7 +86,7 @@ const LikedScreen = ({ navigation }) => {
               }}
 
               keyExtractor={item => `${item.id}` } />
-
+          <View style={{height:'11%'}}></View>
           </View>
         </SafeAreaView>
     )

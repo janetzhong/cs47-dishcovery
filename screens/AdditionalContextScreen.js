@@ -30,9 +30,11 @@ export default class App extends React.Component {
                 <Image source={icons.back} style={commonStyles.backbuttonarrow}/>
                 </TouchableOpacity>
             ),
-        headerTitle: `${capItemName.toUpperCase()}`,
-        headerTitleStyle: {
-          color: COLORS.dishcoveryOrange,
+        headerTitle: capItemName,
+        headerTitleStyle: textStyles.subheading,
+        headerStyle: {
+          shadowColor: 'transparent',
+          elevation: 0,
         }
     })
   }
@@ -186,7 +188,7 @@ export default class App extends React.Component {
             ),
           },
         ],
-      }
+      },
     ];
     
     function handleItemClick({index}) {
@@ -213,13 +215,11 @@ export default class App extends React.Component {
                 itemContainerStyle={styles.outerExpandBox}
                 innerItemContainerStyle={styles.innerExpandBox}
                 customChevron={require('../assets/icons/chevron.jpeg')}
-              />
-              
-              <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Search Results")}>
+              /> 
+              <TouchableOpacity style={[styles.buttonContainer]} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Search Results")}>
                 <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
               </TouchableOpacity>
             </View>
-
           </View>
       </SafeAreaView>
       
