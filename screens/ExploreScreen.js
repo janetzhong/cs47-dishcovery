@@ -1,4 +1,4 @@
-import React ,{useState} from "react"
+import React ,{useState, useRef} from "react"
 import {
     View,
     Text,
@@ -15,10 +15,109 @@ import DishCard from '../components/DishCard.js';
 import { TrendingCard } from "../components"
 import { styles } from "react-native-expandable-listview/src/styles";
 import commonStyles from '../assets/styles/CommonStyles.styles';
+import textStyles from '../assets/styles/TextStyles.style';
+import {
+    usePopup,
+    TOAST_TYPE,
+    TOAST_DURATION,
+    POPUP_DIRECTION,
+  } from 'react-native-popup-view'; 
+  import filterStyles from '../assets/styles/ExploreFilter.style';
 
 console.log(dummyData.trendingRecipes)
 
 const ExploreScreen = ({ navigation }) => {
+
+    const {
+        showToast,
+        showActionSheet,
+        showFloatingView,
+        showModal,
+        showTooltip,
+        hidePopup,
+      } = usePopup();
+    const toolTipAnchor = useRef(null);
+
+    const actionsheet = () => {
+        showModal({
+        //   actionOptions: [
+        //     {
+        //       title: 'option 1',
+        //       subtitle: 'detail goes here',
+        //       onPress: () => {
+        //         hidePopup();
+        //       },
+        //     },
+        //     {
+        //       title: 'option 2',
+        //       disabled: true,
+        //       actionTitleStyle: {color: 'red'},
+        //       onPress: () => {
+        //         hidePopup();
+        //       },
+        //     },
+        //   ],
+            // actionViews: [
+            //     <View><Text>hey</Text></View>,
+            // ]
+            customView: 
+            <View style={[{backgroundColor: "white", marginHorizontal: '1%', height: 700, borderRadius: 20}]}>
+            <View style={commonStyles.outerView}>
+            <View style={filterStyles.mainView}>
+                <Text style={[textStyles.subheading, {textAlign: 'center', marginBottom: '5%'}]}>Filters</Text>
+                <Text style={textStyles.subheading}>Occasion</Text>
+                <View style={{height:'3%'}}></View>
+                <View style={filterStyles.filterGroupContainer}>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Breakfast ✓</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Lunch ✓</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Dinner ✓</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={{height:'2%'}}></View>
+                        <View style={styles.addMoreView}><Text style={[textStyles.linkText, {textAlign: 'right'}]}>View All ›</Text></View>
+                <View style={{height:'7%'}}></View>
+                <Text style={textStyles.subheading}>Difficulty</Text>
+                <View style={{height:'3%'}}></View>
+                <View style={filterStyles.filterGroupContainer}>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Easy ✓</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Medium ✓</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Hard ✓</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={{height:'2%'}}></View>
+                        <View style={styles.addMoreView}><Text style={[textStyles.linkText, {textAlign: 'right'}]}>View All ›</Text></View>
+                <View style={{height:'7%'}}></View>
+                <Text style={textStyles.subheading}>Dietary Preferences</Text>
+                <View style={{height:'3%'}}></View>
+                <View style={filterStyles.filterGroupContainer}>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Vegetarian ✓</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={filterStyles.filterContainer} activeOpacity={0.5}>
+                        <Text style={filterStyles.ButtonTextStyle}>Vegan ✓</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={{height:'2%'}}></View>
+                        <View style={styles.addMoreView}><Text style={[textStyles.linkText, {textAlign: 'right'}]}>View All ›</Text></View>
+                </View>
+
+                <TouchableOpacity style={filterStyles.buttonContainer} activeOpacity = { .5 } onPress={ () => {hidePopup(); navigation.navigate("Search Results")}}>
+                    <Text style={filterStyles.ButtonTextStyle}> Show 4 Results </Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+        });
+      };
 
     function renderSearchBar() {
         const [text, setText] = useState('');
@@ -64,14 +163,16 @@ const ExploreScreen = ({ navigation }) => {
                     />
                 </View>
 
-                <View style={{
+                <TouchableOpacity style={{
                 flexDirection: 'row',
                 alignItems: 'center',
                 paddingLeft: 10,
                 paddingTop: 10,
-                }}>
+                }}
+                activeOpacity={0.5}
+                onPress={actionsheet}>
                     <Ionicons name="options" size={30} color= {COLORS.dishcoveryOrange} justifyContent={'center'} alignItems={'center'} marginLeft= {30}/>
-                </View>
+                </TouchableOpacity>
                     {/* <TouchableOpacity style = {styles.filterButton}><Ionicons name="options" size={25} color= {COLORS.black} /></TouchableOpacity> */}
 
             </SafeAreaView>

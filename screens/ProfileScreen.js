@@ -71,6 +71,9 @@ export default class App extends React.Component {
                             
                         </View>
                         <View style={styles.addMoreView}><Text style={textStyles.linkText}>Add More ›</Text></View>
+                        <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Screen")}>
+                        <Text style={styles.ButtonTextStyle}> Begin Scan </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </SafeAreaView>

@@ -12,6 +12,7 @@ import commonStyles from './assets/styles/CommonStyles.styles';
 
 import { LogBox, View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import {PopupProvider} from 'react-native-popup-view';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
@@ -90,6 +91,7 @@ export default function App() {
   if (!fontsLoaded) return <AppLoading />;
 
   return (
+    <PopupProvider>
     <NavigationContainer>
       <Tab.Navigator
         backBehavior='history'
@@ -179,5 +181,6 @@ export default function App() {
         }} />
       </Tab.Navigator>
     </NavigationContainer>
+    </PopupProvider>
   );
 }
