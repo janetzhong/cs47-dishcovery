@@ -12,7 +12,7 @@ import {
     TouchableHighlight
 } from "react-native"
 import Dimensions from "react-native"
-import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants"
+import { FONTS, COLORS, icons, images, SIZES, recipeData } from "../constants"
 //later dummyData will be changed to a varable likeData dictionary or something
 import { Ionicons } from '@expo/vector-icons';
 import CountryFlag from "react-native-country-flag";
@@ -20,6 +20,12 @@ import commonStyles from "../assets/styles/CommonStyles.styles";
 
 // This is same gallery as liked page. one should make these gallery things into a component
 
+const allRecipedata = recipeData.allRecipes
+const bitteryids = recipeData.bittermelon_ids
+const christmassyids = recipeData.christmas_ids
+
+const bitteryData = allRecipedata.filter(item => bitteryids.includes(item.id));
+const christmassyData = allRecipedata.filter(item => christmassyids.includes(item.id));
 
 
 export default class App extends React.Component {
@@ -43,7 +49,7 @@ export default class App extends React.Component {
                       {/* <Text style={{marginHorizontal: SIZES.padding, ...FONTS.h2}}>
                           Countries visited through recipes:
                       </Text> */}
-                  <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={dummyData.bitterMelonRecipes} 
+                  <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={bitteryData} 
                   renderItem={({ item, index }) => {
                       return (
                           <TouchableHighlight onPress={() => this.props.navigation.navigate("Recipe Screen", { recipe: item})}>

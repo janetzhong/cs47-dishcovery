@@ -23,7 +23,6 @@ const gallerywidth = 280
 const infoboxheight = 85
 
 
-
 const RecipeScreen = ({ navigation, route }) => {
 
     const [selectedRecipe, setSelectedRecipe] = React.useState(null)

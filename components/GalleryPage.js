@@ -9,100 +9,32 @@ import {
     Text,
     FlatList,
     SafeAreaView,
-    TouchableHighlight,
-    TextInput
+    TouchableHighlight
 } from "react-native"
-import { FONTS, COLORS, icons, images, SIZES, dummyData ,recipeData} from "../constants"
-import  * as asynchelper from '../helpers/asynchelpers';
-
-//later dummyData will be changed to a varable likeData dictionary or something
+import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants"
 import { Ionicons } from '@expo/vector-icons';
-import CountryFlag from "react-native-country-flag";
+// import CountryFlag from "react-native-country-flag";
 import commonStyles from "../assets/styles/CommonStyles.styles";
-import GalleryPage from '../components/DishCard.js';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// const countriesvisited = [...new Set(recipeDictionary.map(recipe => recipe.countryicon))];
 
 
-// saveAndUpdate();
-
-const allRecipedata = recipeData.allRecipes
-
-// const likedids = bitteryids+christmassyids
-const newrecipedata = asynchelper.updateIsLiked(allRecipedata,1002)
-
-
-const likedData = newrecipedata.filter(item => item.isLiked);
-const likedids = likedData.map(item => item.id);
-console.log(likedids)
-
-
-const myObject = {
-  id: 'foo',
-  data: {
-    name: 'John Doe',
-    age: 35
-  }
-};
-
-const saveObject = async object => {
-  try {
-    await AsyncStorage.setItem('myObject', JSON.stringify(object));
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const getObject = async () => {
-  try {
-    const data = await AsyncStorage.getItem('myObject');
-    const parsedData = JSON.parse(data);
-    return parsedData;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-saveObject(myObject)
-// console.log(getObject())
-
-// getObject().then(newrecipe => {
-//   const this.state.newobj = newrecipe;
-// });
-
-// const likedData = getObject()
-
-const LikedScreen = ({ navigation }) => {
-  console.log("starting getObject");
-  getObject().then(newRecipe => {
-    const likedData = newRecipe;
-    console.log(likedData)
-  })
-  console.log("finished getObject");
-  
-  
-  const countriesvisited = [...new Set(likedData.map(recipe => recipe.countryicon))];
-  // asynchelper.saveObject(allRecipedata);
-  // const objectFromStorage = asynchelper.getObject();
-  // console.log(objectFromStorage);
-
-  
-  return (
-    //       <GalleryPage recipeItem={dummyData.likedRecipes} onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}/>
-
+//takes in object consisting of recipe list
+const GalleryPage = ({ recipeDictionary , onPress}) => {
+    return (
         <SafeAreaView style={commonStyles.whiteBackground}>
           <View style={commonStyles.outerView}>
             <Text style={styles.subheading}>
               Countries Dishcovered:
             </Text>
-            <View style ={{flexDirection:'row', marginBottom:10 ,justifyContent:'center'}}>
-            {countriesvisited.map(isocode => <CountryFlag isoCode={isocode} size={13} style={{margin:3,borderWidth:0.5,borderColor: "light-grey"}}/>)}
-            </View>
+            {/* <View style ={{flexDirection:'row', marginBottom:10 ,justifyContent:'center'}}>
+            {countriesvisited.map(isocode => <CountryFlag isoCode={`${isocode}`} size={13} style={{margin:3,borderWidth:0.5,borderColor: "light-grey"}}/>)}
+            </View> */}
             
-            <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={likedData} 
+            <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={recipeDictionary} 
               renderItem={({ item }) => {
                 return (
-                  <TouchableHighlight onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}>
+                  <TouchableHighlight onPress={onPress}>
                     <View style={styles.container}>
                       <ImageBackground style={styles.photo} imageStyle={styles.imagephoto} resizeMode="cover" source={item.image} >
                         <View style={{flexDirection: 'row'}}>
@@ -117,7 +49,7 @@ const LikedScreen = ({ navigation }) => {
                                 flexDirection:'row',
                                 alignItems:'center',
                               }}>
-                              <CountryFlag isoCode={item.countryicon} size={8} />
+                              {/* <CountryFlag isoCode={`${item.countryicon}`} size={8} /> */}
                               <Text style={{ color: COLORS.dishcoveryNearBlack, fontFamily:'Inter-SemiBold', fontSize:11 }}>  {item.country}</Text>
                             </View>
 
@@ -159,7 +91,7 @@ const LikedScreen = ({ navigation }) => {
 }
 
 
-export default LikedScreen
+export default GalleryPage;
 
 const SCREEN_WIDTH = 330
 const recipeNumColums = 2

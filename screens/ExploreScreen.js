@@ -10,7 +10,7 @@ import {
     StyleSheet
 } from "react-native"
 import { Ionicons } from '@expo/vector-icons';
-import { FONTS, COLORS, icons, images, SIZES, dummyData } from "../constants"
+import { FONTS, COLORS, icons, images, SIZES, dummyData, recipeData } from "../constants"
 import DishCard from '../components/DishCard.js';
 import { TrendingCard } from "../components"
 import { styles } from "react-native-expandable-listview/src/styles";
@@ -24,7 +24,14 @@ import {
   } from 'react-native-popup-view'; 
   import filterStyles from '../assets/styles/ExploreFilter.style';
 
-console.log(dummyData.trendingRecipes)
+
+
+const allRecipedata = recipeData.allRecipes
+const bitteryids = recipeData.bittermelon_ids
+const christmassyids = recipeData.christmas_ids
+
+const bitteryData = allRecipedata.filter(item => bitteryids.includes(item.id));
+const christmassyData = allRecipedata.filter(item => christmassyids.includes(item.id));
 
 const ExploreScreen = ({ navigation }) => {
 
@@ -155,7 +162,7 @@ const ExploreScreen = ({ navigation }) => {
                             fontSize:14,paddingVertical:10
                         }}
                         placeholderTextColor={COLORS.gray}
-                        placeholder="Search for an ingredient, dish or cuisine"
+                        placeholder="Search ingredient, dish or cuisine"
                         clearButtonMode='while-editing'
                         onChangeText={newText => setText(newText)}
                         defaultValue={text}
@@ -179,7 +186,7 @@ const ExploreScreen = ({ navigation }) => {
         )
     }
 
-    function renderCardSection() {
+    function renderBitterMelonSection() {
                 return (
                     <View
                     style={{
@@ -190,7 +197,7 @@ const ExploreScreen = ({ navigation }) => {
                             Based On Your Scans
                         </Text>
                         <FlatList 
-                        data={dummyData.bitterMelonRecipes}
+                        data={bitteryData}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={item => `${item.id}`}
@@ -211,14 +218,14 @@ const ExploreScreen = ({ navigation }) => {
                 )
             }
 
-   function renderTrendingSection() {
+   function renderChristmasSection() {
         return (
             <View style={{marginTop : 0}}>
                 <Text style={[styles2.subheading, {marginLeft: '5%', paddingLeft: '1%'}]}>
                     Traditional Christmas food from around the world
                 </Text>
                 <FlatList 
-                data={dummyData.christmasRecipes}
+                data={christmassyData}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={item => `${item.id}`}
@@ -252,8 +259,8 @@ const ExploreScreen = ({ navigation }) => {
                             <View style={[commonStyles.outerView, {marginTop: 0}]}>
                             {renderSearchBar()}
                             </View>
-                            {renderCardSection()}
-                            {renderTrendingSection()}
+                            {renderBitterMelonSection()}
+                            {renderChristmasSection()}
                         </View>
                     }
                     ListFooterComponent={

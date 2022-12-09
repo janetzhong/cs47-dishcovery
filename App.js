@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SearchScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
-import {COLORS } from "./constants";
+import {COLORS , recipeData} from "./constants";
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import textStyles from './assets/styles/TextStyles.style';
@@ -16,8 +16,7 @@ import {PopupProvider} from 'react-native-popup-view';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
-// import * as SplashScreen from 'expo-splash-screen';
-// SplashScreen.preventAutoHideAsync();
+
 
 const Tab = createBottomTabNavigator()
 

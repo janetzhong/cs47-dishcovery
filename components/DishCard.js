@@ -43,25 +43,8 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
                     borderTopLeftRadius: SIZES.radius}}>
             {/* Like icon */}
             <View style = {{flex:1,flexDirection: 'row-reverse',justifyContent: 'space-between'}}>
-                {/* <Image source={recipeItem.isBookmarked ? icons.bookmarkFilled : icons.bookmark}
-                style={{width: 20,height: 20,marginRight: SIZES.base,tintColor: COLORS.darkGreen}}/> */}
                 <View style = {styles.heartButton}><Ionicons name="heart" size={25} color= {COLORS.dishcoveryOrange} /></View>
             </View>
-            {/* Country */}
-            {/* <View
-                style={{
-                    position: 'absolute',
-                    margin:15,
-                    paddingHorizontal: SIZES.radiussmall,
-                    paddingVertical: 5,
-                    backgroundColor: "white",
-                    borderRadius: SIZES.radius,
-                    flexDirection:'row',
-                    alignItems:'center'
-                }}>
-                <CountryFlag isoCode={recipeItem.countryicon} size={10} />
-                <Text style={{ color: "black", ...FONTS.h4 }}>  {recipeItem.country}</Text>
-            </View> */}
             </ImageBackground>
             <View
                 style={{
