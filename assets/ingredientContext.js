@@ -10,19 +10,19 @@ export default {
         "new alternate names": {"English": "Bitter Gourd              ", "Hindi": "Karela              ", "Malay": "Peria              ", "Tagalog": "Ampalaya              ", "Chinese": "kǔguā              ", "Haitian": "Asosi              "}
     },
     "lemongrass": {
-        "flavor profile/texture": "lemony",
-        "health benefits": "some blurb or something",
-        "cultural context": "some other lemony blurb",      
-        "origins and geography": "additional lemony blurb",
+        "flavor profile/texture": "• Mild herbal, citrus taste with a hint of ginger\n• Notes of bright floral and cooling mint\n• Contains same oils as lemon fruit, can substitute for lemon flavoring",
+        "health benefits": "Lemongrass may relieve pain and swelling, reduce fever, and prevent the growth of bacteria, yeast, and germs. It is also known to have antioxidant properties.",
+        "new cultural context": {"• Asian cooking": "The fragrant pink insides stop the meat in dishes from overpowering the more delicate flavors.", "• Thai Food": "Added to curry to help digestion and blood circulation, also eaten raw in salads or soup.", "• Southern India": "Used as a medicinal herb, primarily in tea and other drinks.", "• Brazil": "Used in tea to relieve anxiety."},
+        "origins and geography": "Lemongrass is native to the tropical countries of India and Sri Lanka, and now cultivated across Cambodia, Indonesia, China, Guatemala, and Malaysia, and used heavily in Thai cuisine. Requires sunlight, damp soil, and tropical temperatures to grow.",
         "image": "lemongrass",
-        "alternate names": "grassy lemon\nlemony grass",   
+        "new alternate names": {"English": "Citronella              ", "Latin": "Cymbopogon              ", "Spanish": "Hierba Limón              ", "Thai": "Sera              ", "Indonesian": "Selasih              ", "Arabic": "Za'atar              "}
     },
     "cardamom": {
-        "flavor profile/texture": "cardamom",
-        "health benefits": "some blurb or something",
-        "cultural context": "some other cardamomy blurb",      
-        "origins and geography": "additional cardamomy blurb",
+        "flavor profile/texture": "• Sweet, spicy, and aromatic, with hints of citrus and mint\n• Warm and pungent flavor that is more delicate than ginger\n• Versatile spice that has floral notes and hints of camphor and eucalyptus",
+        "health benefits": "Cardamom has anti-imflammatory properties to reduce swelling and pain, and can help lower blood pressure and improve circulation. Cardamom is a good source of antioxidants, and may have digestive benefits, including helping to relieve indigestion, bloating, and gas.",
+        "new cultural context": {"• Indian cooking": "Included in curries, chai tea, and sweet desserts like kulfi and gulab jamun.", "• Middle Eastern Food": "Used in baked goods such as baklava, and traditional coffee blends.", "• Scandanavian Cuisine": "Baked in traditional sweet breads.", "• Ayurvedic Medicine": "Used to aid digestion, freshen the breath, and promote healthy skin."},
+        "origins and geography": "Cardamom is native to the Southeastern regions of the Indian subcontinent, and is the third most expensive spice int he world. It was originally used as an Ayurvedic medicinal treatment, but spread across the world through trade and colonization. The Ancient Egyptians began using cardamom in perfumes and incense, and today, cardamom is cultivated across India, Guatemala, and Indonesia.",
         "image": "cardamom", 
-        "alternate names": "elaichi\nyalakkaya",
+        "new alternate names": {"Hindi": "Elaichi              ", "Khmer": "Kravan              ", "Malayalam": "Ellakka              ", "Kannada": "Yalakki              ", "Thai": "Kram              ", "Urdu": "Choti Elaichi              ", "Tamil": "Barkhar              "}
     }
 };
