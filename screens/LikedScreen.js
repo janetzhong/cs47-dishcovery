@@ -63,7 +63,7 @@ const getObject = async () => {
 };
 
 
-saveObject(myObject)
+saveObject(allRecipedata)
 // console.log(getObject())
 
 // getObject().then(newrecipe => {
@@ -72,13 +72,18 @@ saveObject(myObject)
 
 // const likedData = getObject()
 
-const LikedScreen = ({ navigation }) => {
+const LikedScreen = async ({ navigation }) => {
   console.log("starting getObject");
-  getObject().then(newRecipe => {
-    const likedData = newRecipe;
-    console.log(likedData)
-  })
-  console.log("finished getObject");
+  // getObject().then(newRecipe => {
+  //   let retData = await newRecipe;
+  //   console.log(retData)
+  // })
+
+  //let retData = await getObject(); --> hopefully
+
+
+  //console.log("print to make sure scope is accessible");
+  //console.log(retData);
   
   
   const countriesvisited = [...new Set(likedData.map(recipe => recipe.countryicon))];
