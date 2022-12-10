@@ -14,7 +14,8 @@ import ingredientContext from '../../assets/ingredientContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 const ingredientContexttest = ingredientContext
 const clarifai = new Clarifai.App({
-  apiKey: "0b4d4f4f0a604f5da3889f2139e48efc",
+  //apiKey: "0b4d4f4f0a604f5da3889f2139e48efc",
+  apiKey: "272798102f5e47df84a6486ee9078eed",
 });
 process.nextTick = setImmediate;
 
