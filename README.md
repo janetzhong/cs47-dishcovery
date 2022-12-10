@@ -30,7 +30,7 @@ This is a hi-fi prototype and not all features are complete.
 * The cultural context for the ingredients is manually sourced
 * The liked feature is not yet functional
 * Not all recipe information has been added
-* The image recognition is fully functional with Clarifai AI's food recognition library (~500 food items) but we have limited the results to those available in our cultural context dictionary for demo purposes. Ideally one could train a model specifically for ethnic ingredients
+* The image recognition is fully functional with Clarifai AI's food recognition library (~500 food items) but we have limited the results to those available in our cultural context dictionary (bitter melon, cardamom and lemongrass) for demo purposes. Ideally one could train a model specifically for ethnic ingredients
 * The dietary preferences in the profile, filter and search features are not yet functional
 
 ## Tutorials used
